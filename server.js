@@ -4,6 +4,7 @@ import dotenv from "dotenv";
 import morgan from "morgan";
 import cors from "cors";
 import authRoutes from "./Routes/authRoutes.js";
+import postRoutes from "./Routes/postRoutes.js";
 import connectDB from "./Config/db.js";
 
 //env Configuration
@@ -22,6 +23,7 @@ app.use(cors());
 
 //routes
 app.use("/v1/auth", authRoutes);
+app.use("/v1/post", postRoutes);
 
 //rest api
 app.get("/", (req, res) => {
