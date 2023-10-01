@@ -10,20 +10,21 @@ export const registerController = async (req, res) => {
     const { username, email, password } = req.body;
     const body = req.body;
     if (!username || username.length < 6) {
-      return res.status(404).send({
+      return res.status(400).send({
         success: false,
         message: "Username is required and must be greater than 6 characters.",
-        body,
+        username: username,
       });
     }
     if (!email) {
-      return res.status(404).send({
+      return res.status(400).send({
         success: false,
         message: "Email is required",
+        email,
       });
     }
     if (!password || password.length < 8) {
-      return res.status(404).send({
+      return res.status(400).send({
         success: false,
         message: "Password is required and must be greater than 8 characters.",
       });
@@ -63,23 +64,23 @@ export const registerController = async (req, res) => {
 //Login Controller || POST
 export const loginController = async (req, res) => {
   try {
-    const { username, password } = req.body;
-    if (!username || !password || username.length < 6 || password.length < 8) {
+    const { email, password } = req.body;
+    if (!email || !password || password.length < 8) {
       return res.status(404).send({
         success: false,
-        message: "Invalid username or password",
+        message: "Invalid email or password",
       });
     }
-    const user = await userModel.findOne({ username });
+    const user = await userModel.findOne({ email });
     if (!user) {
-      return res.status(404).send({
+      return res.status(400).send({
         success: false,
-        message: "User Not Found",
+        message: "Email Not Found",
       });
     }
     const match = await comparePassword(password, user.password);
     if (!match) {
-      return res.status(404).send({
+      return res.status(400).send({
         success: false,
         message: "Password Invalid",
       });

@@ -12,7 +12,7 @@ const profileSchema = new mongoose.Schema(
     },
     description: {
       type: String,
-      maxlength: 50,
+      maxlength: 1000,
     },
     star: {
       type: Number,
@@ -61,7 +61,7 @@ const profileSchema = new mongoose.Schema(
     },
     quote: {
       type: String,
-      maxlength: 100,
+      maxlength: 200,
     },
   },
   { timestamps: true }
