@@ -2,14 +2,24 @@ import mongoose from "mongoose";
 
 const postSchema = new mongoose.Schema(
   {
-    username: {
+    user: {
       type: mongoose.ObjectId,
       ref: "Users",
       required: true,
     },
+    image: {
+      public_id: {
+        type: String,
+        required: true,
+      },
+      url: {
+        type: String,
+        required: true,
+      },
+    },
     caption: {
       type: String,
-      maxlength: 50,
+      maxlength: 250,
     },
     likes: {
       type: Number,
@@ -17,14 +27,14 @@ const postSchema = new mongoose.Schema(
     },
     comments: [
       {
-        username: {
+        user: {
           type: mongoose.ObjectId,
           ref: "Users",
         },
         comment: {
           type: String,
           minlength: 1,
-          maxlength: 200,
+          maxlength: 500,
         },
       },
     ],

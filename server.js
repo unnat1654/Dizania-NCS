@@ -26,7 +26,7 @@ app.use("/v1/auth", authRoutes);
 app.use("/v1/post", postRoutes);
 
 //rest api
-app.get("/", (req, res) => {
+app.get("/123", (req, res) => {
   res.status(200).send({
     success: true,
     message: "WELCOME TO DIZANIA",
