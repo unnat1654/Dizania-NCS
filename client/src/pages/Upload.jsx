@@ -1,10 +1,7 @@
-"use client";
-
-import Layout from "@/components/Layout";
-import { useAuth } from "@/context/auth";
+import React from "react";
+import Layout from "../components/Layout";
+import { useAuth } from "../context/auth";
 import { useState, useEffect } from "react";
-import Image from "next/image";
-import { useSearchParams } from "next/navigation";
 import { toast, ToastContainer } from "react-toastify";
 import axios from "axios";
 
@@ -78,7 +75,7 @@ const Upload = () => {
                   className="upload-button"
                 />
               </label>
-              {image && <Image src={image} alt="" width={300} height={300} />}
+              {image && <img src={image} alt="" width={300} height={300} />}
 
               <button
                 className="submit-button"
@@ -90,7 +87,7 @@ const Upload = () => {
               </button>
             </div>
           ) : (
-            <>
+            <div>
               <div className="post-box">
                 <p className="post-heading">CREATE A NEW POST</p>
                 <hr
@@ -125,7 +122,7 @@ const Upload = () => {
                   POST
                 </button>
               </div>
-            </>
+            </div>
           )}
         </div>
         <ToastContainer />

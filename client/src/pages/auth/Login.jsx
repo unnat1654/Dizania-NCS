@@ -1,53 +1,40 @@
-"use client";
-
+import { useNavigate, Link } from "react-router-dom";
 import { useState, useEffect } from "react";
-import { useRouter } from "next/navigation";
 import axios from "axios";
-import { useAuth } from "@/context/auth";
 import { toast, ToastContainer } from "react-toastify";
-import Layout from "@/components/Layout";
-const page = () => {
+import { useAuth } from "../../context/auth";
+import Layout from "../../components/Layout";
+
+const Login = () => {
   const [email, setEmail] = useState();
   const [password, setPassword] = useState();
-  const [reEnterPassword, setReEnterPassword] = useState();
-  const router = useRouter();
+  const navigate = useNavigate();
   const [auth, setAuth] = useAuth();
-
   const [loading, setLoading] = useState(false);
   useEffect(() => {
     if (loading) {
       setTimeout(() => {
-        router.push("/login", { scroll: false });
-      }, 4000);
+        navigate("/");
+      }, 6000);
     }
   }, [loading]);
-
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setLoading(true);
     try {
-      if (password != reEnterPassword) {
-        console.log("Passwords Do Not Match!");
-        toast.info("Passwords Do Not Match!", {
-          position: "top-right",
-          autoClose: 5000,
-          hideProgressBar: false,
-          closeOnClick: true,
-          pauseOnHover: true,
-          draggable: true,
-          progress: undefined,
-          theme: "light",
-        });
-        console.log("Passwords Do Not Match!12");
-        setLoading(false);
-        return;
-      }
-      const { data } = await axios.patch(
-        `${process.env.NEXT_PUBLIC_API_URL}/v1/auth/forgot-password`,
-        { email, newPassword: password }
+      setLoading(true);
+      const { data } = await axios.post(
+        `${process.env.NEXT_PUBLIC_API_URL}/v1/auth/login`,
+        { email, password }
       );
       if (data?.success) {
-        toast.success(`${data?.message}`, {
+        setAuth({
+          ...auth,
+          user: data.user,
+          token: data.token,
+        });
+        localStorage.setItem("auth", JSON.stringify(data));
+
+        toast.success(data?.message, {
           position: "top-right",
           autoClose: 5000,
           hideProgressBar: false,
@@ -59,7 +46,7 @@ const page = () => {
         });
       } else {
         setLoading(false);
-        toast.warning(`${data?.message}`, {
+        toast.warning(data?.message, {
           position: "top-right",
           autoClose: 5000,
           hideProgressBar: false,
@@ -73,7 +60,7 @@ const page = () => {
     } catch (error) {
       setLoading(false);
       console.log(error);
-      toast.error(`${error?.response?.data.message}`, {
+      toast.error(error?.response?.data.message, {
         position: "top-right",
         autoClose: 5000,
         hideProgressBar: false,
@@ -87,7 +74,7 @@ const page = () => {
   };
   // const checkLogIn = () => {
   //   if (auth?.user) {
-  //     router.push("/");
+  //     navigate("/");
   //   }
   // };
   // useEffect(() => {
@@ -96,13 +83,13 @@ const page = () => {
   return (
     <Layout>
       <div>
-        <div className="fpass-main">
-          <span className="fpass-heading">FORGOT PASSWORD</span>
-          <div className="fpass-box">
+        <div className="login-main">
+          <span className="login-heading">LOG IN</span>
+          <div className="login-box">
             <form>
               <input
                 type="email"
-                className="fpass-input"
+                className="login-input"
                 placeholder="Email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
@@ -110,28 +97,31 @@ const page = () => {
               />
               <input
                 type="password"
-                className="fpass-input"
-                placeholder="Generate Password"
+                className="login-input"
+                placeholder="Password"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 required
               />
-              <input
-                type="password"
-                className="fpass-input"
-                placeholder="Re-enter new Password"
-                value={reEnterPassword}
-                onChange={(e) => setReEnterPassword(e.target.value)}
-                required
-              />
-              <button
-                type="submit"
-                className="signup-button"
-                onClick={handleSubmit}
+              <Link
+                className="login-forgot-password-link"
+                to="/forgot-password"
               >
-                Continue
-              </button>
+                Forgot Password
+              </Link>
+              <div className="login-button-wrap">
+                <button
+                  type="submit"
+                  className="login-button"
+                  onClick={handleSubmit}
+                >
+                  Continue
+                </button>
+              </div>
             </form>
+            <span className="login-span">
+              not a member? <Link to="/signup">JOIN</Link>
+            </span>
           </div>
         </div>
       </div>
@@ -140,4 +130,4 @@ const page = () => {
   );
 };
 
-export default page;
+export default Login;

@@ -1,26 +1,25 @@
-"use client";
-
 import { useEffect, useState } from "react";
-import { useRouter } from "next/navigation";
-import Image from "next/image";
+import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { useAuth } from "@/context/auth";
-import Layout from "@/components/Layout";
+import { useAuth } from "../../context/auth";
+import Layout from "../../components/Layout";
+import dIcons from "../../assets/3dicons.svg";
+import rafiki from "../../assets/rafiki.svg";
 
-const page = () => {
+const Signup = () => {
   const [userName, setUserName] = useState();
   const [email, setEmail] = useState();
   const [password, setPassword] = useState();
   const [reEnterPassword, setReEnterPassword] = useState();
   const [auth, setAuth] = useAuth();
-  const router = useRouter();
+  const navigate = useNavigate();
   const [loading, setLoading] = useState(false);
   useEffect(() => {
     if (loading) {
       setTimeout(() => {
-        router.push("/login", { scroll: false });
+        navigate("/login");
       }, 4000);
     }
   }, [loading]);
@@ -34,7 +33,7 @@ const page = () => {
           { username: userName, email, password }
         );
         if (data?.success) {
-          toast.success(`${data?.message}`, {
+          toast.success(data?.message, {
             position: "top-right",
             autoClose: 5000,
             hideProgressBar: false,
@@ -46,7 +45,7 @@ const page = () => {
           });
         } else {
           setLoading(false);
-          toast.warning(`${data?.message}`, {
+          toast.warning(data?.message, {
             position: "top-right",
             autoClose: 5000,
             hideProgressBar: false,
@@ -73,7 +72,7 @@ const page = () => {
     } catch (error) {
       setLoading(false);
       console.log(error);
-      toast.error(`${error?.response?.data.message}`, {
+      toast.error(error?.response?.data.message, {
         position: "top-right",
         autoClose: 5000,
         hideProgressBar: false,
@@ -96,13 +95,8 @@ const page = () => {
   return (
     <Layout>
       <div>
-        <Image src="/rafiki.svg" className="rafiki" height={312} width={406} />
-        <Image
-          src="/3dicons.svg"
-          className="figmaimg"
-          height={118}
-          width={118}
-        />
+        <img src={rafiki} className="rafiki" height={312} width={406} />
+        <img src={dIcons} className="figmaimg" height={118} width={118} />
         <ToastContainer
           position="top-right"
           autoClose={5000}
@@ -175,4 +169,4 @@ const page = () => {
   );
 };
 
-export default page;
+export default Signup;

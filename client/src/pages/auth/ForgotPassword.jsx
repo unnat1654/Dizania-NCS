@@ -1,43 +1,32 @@
-"use client";
-
-import Link from "next/link";
-import { useRouter } from "next/navigation";
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import { useAuth } from "../../context/auth";
 import { toast, ToastContainer } from "react-toastify";
-import { useAuth } from "@/context/auth";
-import Layout from "@/components/Layout";
-
-const Login = () => {
+import Layout from "../../components/Layout";
+const ForgotPassword = () => {
   const [email, setEmail] = useState();
   const [password, setPassword] = useState();
-  const router = useRouter();
+  const [reEnterPassword, setReEnterPassword] = useState();
+  const navigate = useNavigate();
   const [auth, setAuth] = useAuth();
+
   const [loading, setLoading] = useState(false);
   useEffect(() => {
     if (loading) {
       setTimeout(() => {
-        router.push("/", { scroll: false });
-      }, 6000);
+        navigate("/login");
+      }, 4000);
     }
   }, [loading]);
+
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setLoading(true);
     try {
-      setLoading(true);
-      const { data } = await axios.post(
-        `${process.env.NEXT_PUBLIC_API_URL}/v1/auth/login`,
-        { email, password }
-      );
-      if (data?.success) {
-        setAuth({
-          ...auth,
-          user: data.user,
-          token: data.token,
-        });
-        localStorage.setItem("auth", JSON.stringify(data));
-
-        toast.success(`${data?.message}`, {
+      if (password != reEnterPassword) {
+        console.log("Passwords Do Not Match!");
+        toast.info("Passwords Do Not Match!", {
           position: "top-right",
           autoClose: 5000,
           hideProgressBar: false,
@@ -47,9 +36,28 @@ const Login = () => {
           progress: undefined,
           theme: "light",
         });
+        console.log("Passwords Do Not Match!12");
+        setLoading(false);
+        return;
+      }
+      const { data } = await axios.patch(
+        `${process.env.NEXT_PUBLIC_API_URL}/v1/auth/forgot-password`,
+        { email, newPassword: password }
+      );
+      if (data?.success) {
+        toast.success(data?.message, {
+          position: "top-right",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: "undefined",
+          theme: "light",
+        });
       } else {
         setLoading(false);
-        toast.warning(`${data?.message}`, {
+        toast.warning(data?.message, {
           position: "top-right",
           autoClose: 5000,
           hideProgressBar: false,
@@ -63,7 +71,7 @@ const Login = () => {
     } catch (error) {
       setLoading(false);
       console.log(error);
-      toast.error(`${error?.response?.data.message}`, {
+      toast.error(error?.response?.data?.message, {
         position: "top-right",
         autoClose: 5000,
         hideProgressBar: false,
@@ -77,7 +85,7 @@ const Login = () => {
   };
   // const checkLogIn = () => {
   //   if (auth?.user) {
-  //     router.push("/");
+  //     navigate("/");
   //   }
   // };
   // useEffect(() => {
@@ -86,13 +94,13 @@ const Login = () => {
   return (
     <Layout>
       <div>
-        <div className="login-main">
-          <span className="login-heading">LOG IN</span>
-          <div className="login-box">
+        <div className="fpass-main">
+          <span className="fpass-heading">FORGOT PASSWORD</span>
+          <div className="fpass-box">
             <form>
               <input
                 type="email"
-                className="login-input"
+                className="fpass-input"
                 placeholder="Email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
@@ -100,31 +108,28 @@ const Login = () => {
               />
               <input
                 type="password"
-                className="login-input"
-                placeholder="Password"
+                className="fpass-input"
+                placeholder="Generate Password"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 required
               />
-              <Link
-                className="login-forgot-password-link"
-                href="/forgot-password"
+              <input
+                type="password"
+                className="fpass-input"
+                placeholder="Re-enter new Password"
+                value={reEnterPassword}
+                onChange={(e) => setReEnterPassword(e.target.value)}
+                required
+              />
+              <button
+                type="submit"
+                className="fpass-button"
+                onClick={handleSubmit}
               >
-                Forgot Password
-              </Link>
-              <div className="login-button-wrap">
-                <button
-                  type="submit"
-                  className="login-button"
-                  onClick={handleSubmit}
-                >
-                  Continue
-                </button>
-              </div>
+                Continue
+              </button>
             </form>
-            <span className="login-span">
-              not a member? <Link href="/signup">JOIN</Link>
-            </span>
           </div>
         </div>
       </div>
@@ -133,4 +138,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default ForgotPassword;

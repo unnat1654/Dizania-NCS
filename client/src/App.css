@@ -78,7 +78,7 @@ a {
 
 .Hnavigation-bar ul li:nth-child(1) {
   border-radius: 10px;
-  margin-left: 72px;
+  margin-left: 30px;
   margin-top: 8px;
   height: 93%;
 }
@@ -281,7 +281,6 @@ a {
 .fpass-box form {
   display: flex;
   flex-direction: column;
-  row-gap: 25px;
   align-items: center;
 }
 
@@ -294,6 +293,7 @@ a {
   background-color: var(--black);
   color: #80807F;
   padding: 0 30px;
+  margin:10px 5px;
   border: 0px var(--black) solid;
   font-family: 'Inter', sans-serif;
   font-size: 20px;
@@ -320,8 +320,12 @@ a {
   background: linear-gradient(#0A0D0F, #0A0D0F) padding-box,
     linear-gradient(to bottom, var(--blue), var(--pink)) border-box;
   border: 2.5px solid transparent;
+  margin-block:30px;
 }
 
+.signup-button,.login-button{
+  margin-bottom: 10px;
+}
 
 
 .rafiki {
@@ -338,15 +342,17 @@ a {
 }
 
 .login-forgot-password-link {
-  margin-top: -10px;
   align-self: flex-start;
-  margin-left: 5px;
+  margin-left: 15px;
   color: var(--blue);
+  opacity: 0.8;
 
 }
 
 .login-forgot-password-link:hover {
-  text-decoration: underline;
+  text-decoration: none;
+  color: var(--blue);
+  opacity: 0.7;
 }
 
 .login-span {

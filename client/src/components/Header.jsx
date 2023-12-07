@@ -1,30 +1,29 @@
-import Image from "next/image";
-import logo from "@/public/logo.svg";
-import { useAuth } from "@/context/auth";
-import Link from "next/link";
-import { useRouter } from "next/navigation";
+import React from "react";
+import logo from "../assets/logo.svg";
+import { useAuth } from "../context/auth";
+import { Link, useNavigate } from "react-router-dom";
 const Header = () => {
   const [auth, setAuth] = useAuth();
-  const router = useRouter();
+  const navigate = useNavigate();
   return (
-    <>
+    <div>
       <div className="Hnavigation-bar">
         <ul>
           <li>
-            <Link href="/">
-              <Image src={logo} className="logo" />
+            <Link to="/">
+              <img src={logo} className="logo" />
             </Link>
           </li>
           <li>
-            <Link href="/participate">PARTICIPATE</Link>
+            <Link to="/participate">PARTICIPATE</Link>
           </li>
           <li>
-            <Link href="/discover">DISCOVER</Link>
+            <Link to="/discover">DISCOVER</Link>
           </li>
           {auth?.user ? (
             <>
               <li>
-                <Link href="/profile">PROFILE</Link>
+                <Link to="/profile">PROFILE</Link>
               </li>
               <li className="navigation-button">
                 <button
@@ -49,7 +48,7 @@ const Header = () => {
           )}
         </ul>
       </div>
-    </>
+    </div>
   );
 };
 
