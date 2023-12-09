@@ -32,16 +32,7 @@ const profileSchema = new mongoose.Schema(
         type: Number,
       },
     },
-    tools: [
-      {
-        name: {
-          type: String,
-        },
-        slug: {
-          type: String,
-        },
-      },
-    ],
+    tools: [{ type: mongoose.ObjectId, ref: "Tools" }],
     links: {
       instagram: {
         type: String,

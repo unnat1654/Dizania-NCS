@@ -23,7 +23,7 @@ const Login = () => {
     try {
       setLoading(true);
       const { data } = await axios.post(
-        `${process.env.NEXT_PUBLIC_API_URL}/v1/auth/login`,
+        `${import.meta.env.VITE_PUBLIC_API_URL}/v1/auth/login`,
         { email, password }
       );
       if (data?.success) {
@@ -72,19 +72,20 @@ const Login = () => {
       });
     }
   };
-  // const checkLogIn = () => {
-  //   if (auth?.user) {
-  //     navigate("/");
-  //   }
-  // };
-  // useEffect(() => {
-  //   checkLogIn();
-  // }, []);
+  const checkLogIn = () => {
+    if (auth?.user) {
+      navigate("/");
+    }
+  };
+  useEffect(() => {
+    checkLogIn();
+  });
   return (
     <Layout>
       <div>
         <div className="login-main">
           <span className="login-heading">LOG IN</span>
+          {JSON.stringify(auth)}
           <div className="login-box">
             <form>
               <input

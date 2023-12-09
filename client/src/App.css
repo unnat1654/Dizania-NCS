@@ -1,18 +1,18 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Inter&display=swap");
 
 :root {
-  --blue: #3360C5;
-  --pink: #C018CE;
+  --blue: #3360c5;
+  --pink: #c018ce;
   --black: #080808;
-  --grey: #0A0C10;
-  --white: #FDFDFD;
+  --grey: #0a0c10;
+  --white: #fdfdfd;
 }
 
 * {
   box-sizing: border-box;
   padding: 0;
   margin: 0;
-  overflow-x: hidden;
+  overflow: hidden;
 }
 
 html,
@@ -22,18 +22,13 @@ body {
   background-color: var(--black);
   color: white;
   word-wrap: break-word;
+  overflow-y: auto;
 }
-
 
 a {
   color: inherit;
   text-decoration: none;
 }
-
-
-
-
-
 
 /*---------------------------------------- NAVIGATION BAR -------------------------------------
 ---------------------------------------- NAVIGATION BAR -------------------------------------
@@ -47,13 +42,11 @@ a {
 ---------------------------------------- NAVIGATION BAR -------------------------------------
 ---------------------------------------- NAVIGATION BAR -------------------------------------*/
 
-
-
-
 .Hnavigation-bar {
-  height: 100px;
+  height: 12vh;
   background-color: var(--black);
   color: white;
+  box-sizing: border-box;
 }
 
 .Hnavigation-bar ul {
@@ -67,7 +60,7 @@ a {
 
 .Hnavigation-bar ul li {
   font-size: calc(9px + 0.4vw);
-  color: #80807F;
+  color: #80807f;
   text-transform: uppercase;
   margin-right: 30px;
 }
@@ -100,27 +93,27 @@ a {
 
 @keyframes buttongradient {
   0% {
-    background: linear-gradient(#0A0D0F, #0A0D0F) padding-box,
+    background: linear-gradient(#0a0d0f, #0a0d0f) padding-box,
       linear-gradient(to bottom, var(--blue), var(--pink)) border-box;
   }
 
   40% {
-    background: linear-gradient(#0A0D0F, #0A0D0F) padding-box,
+    background: linear-gradient(#0a0d0f, #0a0d0f) padding-box,
       linear-gradient(to bottom, #783dca, #b31ecd) border-box;
   }
 
   50% {
-    background: linear-gradient(#0A0D0F, #0A0D0F) padding-box,
+    background: linear-gradient(#0a0d0f, #0a0d0f) padding-box,
       linear-gradient(to bottom, #9130cb, #9130cb) border-box;
   }
 
   75% {
-    background: linear-gradient(#0A0D0F, #0A0D0F) padding-box,
+    background: linear-gradient(#0a0d0f, #0a0d0f) padding-box,
       linear-gradient(to bottom, #b31ecd, #783dca) border-box;
   }
 
   100% {
-    background: linear-gradient(#0A0D0F, #0A0D0F) padding-box,
+    background: linear-gradient(#0a0d0f, #0a0d0f) padding-box,
       linear-gradient(to bottom, var(--pink), var(--blue)) border-box;
   }
 }
@@ -137,21 +130,11 @@ a {
   border-radius: 8px;
   animation: buttongradient 5s linear 0s infinite alternate;
   -webkit-animation: buttongradient 5s linear 0s infinite alternate;
-  ;
 }
 
 .navigation-button button:hover {
   color: #d670dffb;
 }
-
-
-
-
-
-
-
-
-
 
 /*---------------------------------------- FOOTER BAR -------------------------------------
 ---------------------------------------- FOOTER BAR -------------------------------------
@@ -168,14 +151,13 @@ a {
 ---------------------------------------- FOOTER BAR -------------------------------------
 ---------------------------------------- FOOTER BAR -------------------------------------*/
 
-
-
-
-
 .footer-bar {
   height: 108px;
   background-color: var(--black);
   color: white;
+}
+.footer-bar * {
+  overflow: visible;
 }
 
 .footer-bar ul {
@@ -189,13 +171,13 @@ a {
 
 .footer-bar ul li {
   font-size: calc(9px + 0.4vw);
-  color: #6681B9;
+  color: #6681b9;
   margin-right: 6vw;
 }
 
 .footer-bar ul li:nth-child(1) {
   border-radius: 10px;
-  margin-left: 10vw;
+  margin-left: 5vw;
   margin-top: 14px;
 }
 
@@ -219,12 +201,9 @@ a {
   margin-right: 7vw;
 }
 
-
-
 .footer-bar ul li:hover {
   color: #8aa1cd;
 }
-
 
 /*----------------------------------------AUTH STYLES----------------------------------------
 ----------------------------------------AUTH STYLES----------------------------------------
@@ -248,6 +227,7 @@ a {
   row-gap: 30px;
   margin: 10vh;
   z-index: 10;
+  overflow: visible;
 }
 
 .signup-heading,
@@ -257,7 +237,7 @@ a {
   font-family: Verdana, Geneva, Tahoma, sans-serif;
   letter-spacing: 0.2rem;
   color: var(--black);
-  background: linear-gradient(179.89deg, #FFEFEF 0.09%, #4B4A4A 141.99%);
+  background: linear-gradient(179.89deg, #ffefef 0.09%, #4b4a4a 141.99%);
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-stroke: 7px transparent;
@@ -271,9 +251,11 @@ a {
   border-radius: 20px;
   border: 0.4px;
   padding: 30px 40px 10px 40px;
-  background: linear-gradient(0deg, #0A0D0F, #0A0D0F),
-    linear-gradient(0deg, #80807F, #80807F);
-  border: 0.4px solid #80807F
+  background: linear-gradient(0deg, #0a0d0f, #0a0d0f),
+    linear-gradient(0deg, #80807f, #80807f);
+  border: 0.4px solid #80807f;
+  position: relative;
+  overflow: visible;
 }
 
 .signup-box form,
@@ -291,11 +273,11 @@ a {
   height: 50px;
   border-radius: 10px;
   background-color: var(--black);
-  color: #80807F;
+  color: #80807f;
   padding: 0 30px;
-  margin:10px 5px;
+  margin: 10px 5px;
   border: 0px var(--black) solid;
-  font-family: 'Inter', sans-serif;
+  font-family: "Inter", sans-serif;
   font-size: 20px;
   font-weight: 400;
   line-height: 34px;
@@ -317,28 +299,29 @@ a {
   text-align: left;
   max-width: fit-content;
   border-radius: 6px;
-  background: linear-gradient(#0A0D0F, #0A0D0F) padding-box,
+  background: linear-gradient(#0a0d0f, #0a0d0f) padding-box,
     linear-gradient(to bottom, var(--blue), var(--pink)) border-box;
   border: 2.5px solid transparent;
-  margin-block:30px;
+  margin-block: 30px;
 }
 
-.signup-button,.login-button{
+.signup-button,
+.login-button {
   margin-bottom: 10px;
 }
 
-
 .rafiki {
   position: absolute;
-  bottom: 5vh;
-  right: 10vw;
+  bottom: -100px;
+  right: -200px;
   opacity: 50%;
+  z-index: 0;
 }
 
 .figmaimg {
   position: absolute;
-  bottom: 5vh;
-  left: 22vw;
+  bottom: -50px;
+  left: -50px;
 }
 
 .login-forgot-password-link {
@@ -346,7 +329,6 @@ a {
   margin-left: 15px;
   color: var(--blue);
   opacity: 0.8;
-
 }
 
 .login-forgot-password-link:hover {
@@ -359,7 +341,6 @@ a {
   margin-top: 20px;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
-
 
 /* ----------------------------------------Upload Post Styles----------------------------------------
 ----------------------------------------Upload Post Styles----------------------------------------
@@ -393,28 +374,31 @@ input[type="file"] {
   width: 50vw;
   padding: 20px;
   border-radius: 10px;
-  background-color: #0D1215;
-  background-image: linear-gradient(to right, #80807F 50%, transparent 50%), linear-gradient(to right, #80807F 50%, transparent 50%), linear-gradient(to bottom, #80807F 50%, transparent 50%), linear-gradient(to bottom, #80807F 50%, transparent 50%);
+  background-color: #0d1215;
+  background-image: linear-gradient(to right, #80807f 50%, transparent 50%),
+    linear-gradient(to right, #80807f 50%, transparent 50%),
+    linear-gradient(to bottom, #80807f 50%, transparent 50%),
+    linear-gradient(to bottom, #80807f 50%, transparent 50%);
   background-position: left top, left bottom, left top, right top;
   background-repeat: repeat-x, repeat-x, repeat-y, repeat-y;
   background-size: 20px 2px, 20px 2px, 2px 20px, 2px 20px;
 }
 
 .post-box {
-  margin-top: 10vh;
+  margin-top: 5vh;
+  margin-bottom: 5vh;
   display: flex;
   flex-direction: column;
   justify-content: space-around;
   align-items: center;
-  background: linear-gradient(0deg, #0A0D0F, #0A0D0F),
+  background: linear-gradient(0deg, #0a0d0f, #0a0d0f),
     linear-gradient(0deg, #000000, #000000);
   border-radius: 10px;
-
 }
 
 .uploadimg--heading,
 .post-heading {
-  color: #80807F;
+  color: #80807f;
   font-size: calc(20px + 1.5vw);
   padding: 10px;
   margin: 25px;
@@ -424,8 +408,7 @@ input[type="file"] {
   font-size: calc(15px + 1.5vw);
   padding: 50px;
   padding-block: 5px;
-  border-bottom: 0.6px solid #6681B9;
-
+  border-bottom: 0.6px solid #6681b9;
 }
 
 .upload-button {
@@ -434,43 +417,100 @@ input[type="file"] {
   border: 0.1px solid #80807f70;
   border-radius: 4px;
   padding: 12px;
-  background: linear-gradient(0deg, #0A0D0F, #0A0D0F);
+  background: linear-gradient(0deg, #0a0d0f, #0a0d0f);
   font-family: Verdana;
   font-size: calc(10px + 1vw);
   text-align: center;
   overflow: hidden;
-  color: #80807F;
+  color: #80807f;
 }
 
 .upload-button:hover {
-  background: linear-gradient(0deg, #0A0D0F, #0A0D0F),
-    linear-gradient(0deg, #80807F, #80807F);
+  background: linear-gradient(0deg, #0a0d0f, #0a0d0f),
+    linear-gradient(0deg, #80807f, #80807f);
 }
 
 .post-main {
   display: flex;
   justify-content: center;
   align-items: flex-start;
-  margin: 3vh 3vw 0 3vw;
+  margin: 3vh 3vw 3vh 3vw;
+}
+.post-main div {
+  padding: 50px;
+}
+.post-main-typed {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  margin-left: 0;
 }
 
 .caption-input {
   width: 25vw;
-  margin: 30px;
   height: 50px;
   color: var(--white);
   background-color: inherit;
-  padding: 20px;
+  border-radius: 5px;
   font-size: 20px;
-  border: 0px black solid;
+  border: 0.5px rgba(49, 49, 49, 0.699) solid;
   min-width: 25vw;
-  min-height: 10vh;
+  min-height: 13vh;
+  padding: 10px;
 }
 
 .caption-input:focus {
   outline: none;
 }
-
+.tools-heading {
+  font-family: Verdana;
+  font-size: 20px;
+  font-weight: 400;
+  line-height: 34px;
+  letter-spacing: 0em;
+  text-align: left;
+  color: #80807f;
+  margin-top: 10px;
+}
+.tools-list {
+  display: flex;
+  justify-content: flex-start;
+  align-content: flex-start;
+  width: 350px;
+  max-width: 500px;
+  flex-wrap: wrap;
+  margin: -30px -20px;
+}
+.tools-list-image {
+  width: 60px;
+  height: 60px;
+  margin: 0;
+}
+.tools-list div {
+  width: fit-content;
+  height: fit-content;
+  padding: 0;
+  margin: 0;
+}
+.tools-list div * {
+  overflow: visible;
+}
+.tools-list-input {
+  height: 0;
+  width: 0;
+  opacity: 0;
+}
+.tools-list-label {
+  display: inline-block;
+  border-radius: 10px;
+  padding: 0px;
+  margin: 5px;
+  opacity: 0.5;
+}
+.tools-list-input:checked + .tools-list-label {
+  opacity: 1;
+}
 .submit-button {
   color: var(--white);
   background-color: var(--black);
@@ -485,16 +525,284 @@ input[type="file"] {
   max-width: fit-content;
   border-radius: 11.2px;
   margin-block: 20px;
-  background: linear-gradient(#0A0D0F, #0A0D0F) padding-box,
+  background: linear-gradient(#0a0d0f, #0a0d0f) padding-box,
     linear-gradient(to bottom, var(--blue), var(--pink)) border-box;
   border: 2.5px solid transparent;
 }
 
 .post-button {
-  margin-block: 70px;
+  margin-bottom: 70px;
 }
 
 .submit-button:hover {
   background: linear-gradient(#0f151b, #121b23) padding-box,
     linear-gradient(to bottom, var(--pink), var(--blue)) border-box;
+}
+
+/* ----------------------------------------HOME PAGE----------------------------------------
+----------------------------------------HOME PAGE----------------------------------------
+----------------------------------------HOME PAGE----------------------------------------
+----------------------------------------HOME PAGE----------------------------------------
+----------------------------------------HOME PAGE----------------------------------------
+----------------------------------------HOME PAGE----------------------------------------
+----------------------------------------HOME PAGE----------------------------------------
+----------------------------------------HOME PAGE----------------------------------------
+----------------------------------------HOME PAGE----------------------------------------
+----------------------------------------HOME PAGE----------------------------------------
+----------------------------------------HOME PAGE----------------------------------------*/
+
+.home-buttons {
+  max-width: 400px;
+  padding: 30px 40px;
+  margin-top: 5vh;
+  font-family: Verdana;
+  font-weight: 400;
+  font-size: 32px;
+  letter-spacing: 0em;
+  color: white;
+  border: 2.5px solid transparent;
+  border-radius: 15px;
+  letter-spacing: 2px;
+  background: linear-gradient(#0a0d0f, #0a0d0f) padding-box,
+    linear-gradient(to bottom, var(--blue), var(--pink)) border-box;
+}
+.pane-1 {
+  width: 100%;
+  height: 88vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  position: relative;
+  overflow: visible;
+  background-color: #000000;
+  z-index: 3;
+}
+.pane-1-scroller {
+  display: flex;
+  height: 45vh;
+  width: 90vw;
+  overflow-x: scroll;
+  overflow-y: hidden;
+}
+.pane-1-scroller-item {
+  margin: auto 2%;
+  width: 50%;
+  flex: none;
+}
+
+.pane-1-cuboid {
+  position: absolute;
+  left: 0;
+  bottom: -200px;
+}
+.pane-1-3dicons {
+  position: absolute;
+  right: 10px;
+  bottom: -50px;
+}
+
+/* color: white;
+  background-color: white;
+  text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+ */
+
+.pane-2 {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  position: relative;
+  overflow: hidden;
+  background-color: #000000;
+}
+.pane-2 * {
+  overflow: visible;
+}
+.pane-2-text-main {
+  color: white;
+  -webkit-text-fill-color: transparent;
+  -webkit-text-stroke: 1px;
+  font-family: Verdana;
+  font-size: 70px;
+  font-weight: 700;
+  line-height: 78px;
+  letter-spacing: 0em;
+  text-align: center;
+}
+.pane-2-text-main {
+  color: white;
+  -webkit-text-fill-color: transparent;
+  -webkit-text-stroke: 1px;
+  font-family: Verdana;
+  font-size: 70px;
+  font-weight: 700;
+  line-height: 78px;
+  letter-spacing: 0em;
+  text-align: center;
+  max-width: 55vw;
+}
+.pane-2-text-sub {
+  color: white;
+  font-family: Verdana;
+  font-size: 60px;
+  font-weight: 700;
+  line-height: 78px;
+  letter-spacing: 0em;
+  text-align: center;
+  margin-top: 40px;
+}
+.pane-two-gradient {
+  position: absolute;
+  top: -600px;
+  left: 0;
+  width: 100vw;
+}
+.pane-two-graphic {
+  position: absolute;
+  bottom: 0;
+  right: 60px;
+}
+.pane-two-eclipse {
+  position: absolute;
+  bottom: -50px;
+  right: 0px;
+}
+
+.pane-3 {
+  background-color: #080808;
+  width: 100%;
+  min-height: 150vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 70px;
+}
+.pane-3 * {
+  overflow: visible;
+}
+.pane-3-text-main {
+  color: white;
+  font-family: Verdana;
+  font-size: 70px;
+  font-weight: 700;
+  line-height: 78px;
+  letter-spacing: 0em;
+  text-align: center;
+}
+.pane-3-text-sub {
+  color: #80807f;
+  font-family: Verdana;
+  font-size: 60px;
+  font-weight: 400;
+  line-height: 78px;
+  text-align: center;
+  margin-top: 5%;
+  font-family: Verdana;
+  font-size: 36px;
+  font-weight: 400;
+  line-height: 44px;
+  letter-spacing: 0em;
+}
+.pane-3-table {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin-top: 40px;
+}
+.pane-3-table-row {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  margin-block: 40px;
+}
+.pane-3-table-row div {
+  border: 10px solid #929292;
+  border-radius: 20%;
+  width: 250px;
+  height: 250px;
+  box-sizing: border-box;
+  background-color: #0a0d0f;
+}
+.pane-3-graphics {
+  margin: 50px;
+  width: 130px;
+}
+.pane-3-graphics-x {
+  margin: 25px;
+  width: 180px;
+}
+.pane-3-table-row span {
+  width: 350px;
+  margin-left: 70px;
+  font-family: Verdana;
+  font-size: 25px;
+  font-weight: 400;
+  line-height: 35px;
+  letter-spacing: 0em;
+  text-align: left;
+  text-transform: capitalize;
+}
+
+.pane-4 {
+  margin-top: 1vh;
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  /* padding: 5vh 10vw; */
+}
+.pane-4-text {
+  font-family: Verdana;
+  font-size: 48px;
+  font-weight: 400;
+  line-height: 58px;
+  letter-spacing: 0.015em;
+  text-align: center;
+}
+.pane-4-image {
+  border: 2.5px solid transparent;
+  border-radius: 20px;
+  background-color: red;
+  padding: 0px 10vw;
+  background: linear-gradient(#0a0d0f, #0a0d0f) padding-box,
+    linear-gradient(to bottom, var(--blue), var(--pink)) border-box;
+}
+
+.pane-5 {
+  margin-top: 1vh;
+  width: 100%;
+  min-height: 75vh;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  padding: 10vh 20vw;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+}
+.pane-5-background {
+  position: absolute;
+}
+.pane-5-item {
+  border-radius: 20px;
+  overflow: hidden;
+  position: relative;
+  width: 300px;
+  height: 400px;
+  margin-block: 100px;
+  flex: none;
+}
+.pane-5-item img {
+  position: absolute;
+  left: -10px;
+  top: -10px;
+  width: 350px;
 }

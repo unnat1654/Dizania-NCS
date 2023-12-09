@@ -41,7 +41,7 @@ const ForgotPassword = () => {
         return;
       }
       const { data } = await axios.patch(
-        `${process.env.NEXT_PUBLIC_API_URL}/v1/auth/forgot-password`,
+        `${import.meta.env.VITE_PUBLIC_API_URL}/v1/auth/forgot-password`,
         { email, newPassword: password }
       );
       if (data?.success) {
@@ -83,14 +83,14 @@ const ForgotPassword = () => {
       });
     }
   };
-  // const checkLogIn = () => {
-  //   if (auth?.user) {
-  //     navigate("/");
-  //   }
-  // };
-  // useEffect(() => {
-  //   checkLogIn();
-  // }, []);
+  const checkLogIn = () => {
+    if (auth?.user) {
+      navigate("/");
+    }
+  };
+  useEffect(() => {
+    checkLogIn();
+  }, []);
   return (
     <Layout>
       <div>
