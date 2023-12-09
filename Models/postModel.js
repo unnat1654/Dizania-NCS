@@ -12,7 +12,7 @@ const postSchema = new mongoose.Schema(
         type: String,
         required: true,
       },
-      url: {
+      secure_url: {
         type: String,
         required: true,
       },
@@ -20,6 +20,10 @@ const postSchema = new mongoose.Schema(
     caption: {
       type: String,
       maxlength: 250,
+    },
+    tool: {
+      type: mongoose.ObjectId,
+      ref: "tools",
     },
     likes: {
       type: Number,
