@@ -1,0 +1,334 @@
+.show {
+    display: flex;
+    flex-direction: column;
+    gap: 3.75rem;
+}
+
+.upper {
+    padding: 1rem;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+}
+
+.textWrap {
+    width: 65%;
+
+    @media screen and (min-width:900px) {
+        padding: 1.5rem;
+    }
+}
+
+.rank {
+    margin: 0 auto;
+    max-width: 25.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0 1rem;
+    border-radius: 0.5rem;
+    border: 0.8px solid var(--colors-text, #80807F);
+    opacity: 0.8;
+    background: var(--colors-black-3, #0D1215);
+}
+
+.rankImgC {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 1rem 5.25rem;
+    width: 100%;
+    overflow: hidden;
+    gap: 1.12rem;
+}
+
+.badge {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.ranktext {
+    font-family: Verdana;
+    font-size: 1.5rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    background: var(--linear-1, linear-gradient(3deg, #C018CE 32.31%, #0A7ACC 92.09%));
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.competitions {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin: 2.5rem 0;
+}
+
+.competitions p:nth-child(1) {
+    color: var(--colors-text, #80807F);
+    font-family: Verdana;
+    font-size: 1.125rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+
+.competitions p:nth-child(2) {
+    color: var(--colors-text, #80807F);
+    font-family: Verdana;
+    font-size: 2rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+
+.streak {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.streaks {
+    margin: 1.75rem 1rem;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    align-content: space-between;
+    gap: 1rem;
+}
+
+.streaks p {
+    color: var(--colors-text, #80807F);
+    font-family: Verdana;
+    font-size: 1.5rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+
+.profile {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    padding: 1rem;
+    justify-content: space-between;
+}
+
+.profileImgC {
+    width: 100%;
+    height: 100%;
+    max-width: 13rem;
+    max-height: 13rem;
+    border-radius: 50%;
+    overflow: hidden;
+}
+
+.profieImage {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+
+}
+
+.nameC {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    justify-content: center;
+}
+
+.name {
+    color: var(--colors-text, #80807F);
+    font-family: Verdana;
+    font-size: 2.625rem;
+    font-style: normal;
+    font-weight: 400;
+
+    @media (min-width:900px) and (max-width:1024px) {
+        font-size: 1.85rem;
+    }
+
+}
+
+.starsC {
+    display: flex;
+    gap: 0.25rem;
+}
+
+.star {
+    width: 3rem;
+    height: 3rem;
+    filter: brightness(1.2);
+}
+
+.bio {
+    color: var(--colors-text, #80807F);
+    font-family: Verdana;
+    font-size: 1.5rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+
+.connectW {
+    width: 2.5rem;
+    height: 2.5rem;
+    overflow: hidden;
+}
+
+.connectsImg {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.connectC {
+    display: flex;
+    max-width: 42.5rem;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 0.5rem;
+    border: 0.8px solid var(--colors-text, #80807F);
+    opacity: 0.8;
+    padding: 1rem;
+    background: var(--colors-black-3, #0D1215);
+    margin: 1.87rem 0;
+}
+
+.connectIconsC {
+    display: flex;
+    flex-direction: row;
+}
+
+.connectText {
+    color: var(--colors-text, #80807F);
+    font-family: Verdana;
+    font-size: 1.75rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+
+.toolsC {
+    max-width: 42.5rem;
+    border-radius: 0.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-bottom: 1.87rem;
+    border: 0.8px solid var(--colors-text, #80807F);
+    background: var(--colors-black-3, #0D1215);
+}
+
+.toolW {
+    width: 6.25rem;
+    height: 6.25rem;
+    overflow: hidden;
+}
+
+.toolsText {
+    color: var(--colors-text, #80807F);
+    font-family: Verdana;
+    font-size: 2rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    margin-left: 1rem;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+}
+
+.toolsW {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1.25rem;
+}
+
+.toolsIcon {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.mostused {
+    padding: 0.5rem;
+}
+
+@media screen and (max-width:900px) {
+    .textWrap {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .upper {
+        flex-direction: column;
+    }
+
+
+    .profile {
+        flex-direction: column;
+        align-items: center;
+        gap: 2rem;
+        padding-bottom: 1.3rem;
+    }
+}
+
+@media screen and (max-width:425px) {
+
+    .upper {
+        padding: 0.8rem;
+    }
+
+    .competitions p:nth-child(1) {
+        font-size: 0.9rem;
+    }
+
+    .competitions p:nth-child(2) {
+        font-size: 1rem;
+    }
+
+    .streaks p {
+        font-size: 1rem;
+    }
+
+    .profile {
+        gap: 1rem;
+    }
+
+    .nameC {
+        padding-top: 1rem;
+    }
+
+    .name {
+        font-size: 1.7rem;
+    }
+
+    .star {
+        width: 2rem;
+    }
+
+    .bio {
+        font-size: 1rem;
+        opacity: 0.8;
+        text-align: center;
+    }
+
+    .connectText {
+        font-size: 1.4rem;
+    }
+
+    .toolsText {
+        font-size: 1.4rem;
+
+    }
+}
