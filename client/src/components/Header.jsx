@@ -28,7 +28,7 @@ const Header = () => {
               <li className="navigation-button">
                 <button
                   onClick={() => {
-                    router.push("/upload");
+                    navigate("/upload");
                   }}
                 >
                   UPLOAD
@@ -39,7 +39,7 @@ const Header = () => {
             <li className="navigation-button">
               <button
                 onClick={() => {
-                  router.push("/signup");
+                  navigate("/signup");
                 }}
               >
                 JOIN US

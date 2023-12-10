@@ -3,7 +3,7 @@ import { cloudinary } from "../Config/cloudinary.js";
 
 //create post || Method Post
 export const createPostController = async (req, res) => {
-  const { caption, user, image } = req.body;
+  const { caption, tool, user, image } = req.body;
   try {
     const { public_id, secure_url } = await cloudinary.uploader.upload(image, {
       folder: "posts",
@@ -11,6 +11,7 @@ export const createPostController = async (req, res) => {
     const post = new postModel({
       user,
       caption,
+      tool,
       image: { public_id, secure_url },
     });
     await post.save();
