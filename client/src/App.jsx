@@ -8,6 +8,8 @@ import Login from "./pages/auth/Login";
 import Home from "./pages/Home";
 import Create from "./pages/profile/create/Create";
 import Show from "./pages/profile/show/Show";
+import Header from "./components/Header";
+import Footer from "./components/Footer";
 
 function App() {
   return (
@@ -19,8 +21,9 @@ function App() {
         <Route path="/forgot-password" element={<ForgotPassword />} />
         <Route path="/upload" element={<Upload />} />
         <Route path="/create_profile" element={<Create />} />
-        <Route path="/show_profile" element={<Show user={""}/>} />
+        <Route path="/show_profile" element={<Show user={""} />} />
       </Routes>
+      <Footer />
     </div>
   );
 }

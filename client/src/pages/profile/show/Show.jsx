@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import styles from "./Show.module.css";
 import postImg from "./assets/post.png";
 import rankImg from "./assets/rank.svg";
@@ -111,6 +112,7 @@ const Show = ({ user }) => {
     "adobe-indesign",
     "adobe-xd",
   ];
+  const most_used = ["figma", "adobe-xd", "sketch"];
   const rank = 1;
   const numCompetitions = 34;
   const currStreak = 24;
@@ -186,7 +188,7 @@ const Show = ({ user }) => {
             <div className={styles.toolsW}>
               {tools.map((tool) => {
                 return (
-                  <div className={styles.toolW}>
+                  <Link to="/" className={styles.toolW}>
                     {tool === "figma" ? (
                       <img src={figma} alt="" className={styles.toolsIcon} />
                     ) : tool === "adobe-photoshop" ? (
@@ -206,16 +208,16 @@ const Show = ({ user }) => {
                         className={styles.toolsIcon}
                       />
                     )}
-                  </div>
+                  </Link>
                 );
               })}
             </div>
             <div className={styles.mostused}>
               <div className={styles.toolsText}>Most used tool</div>
               <div className={styles.toolsW}>
-                {tools.map((tool) => {
+                {most_used.map((tool) => {
                   return (
-                    <div className={styles.toolW}>
+                    <Link className={styles.toolW}>
                       {tool === "figma" ? (
                         <img src={figma} alt="" className={styles.toolsIcon} />
                       ) : tool === "adobe-photoshop" ? (
@@ -239,11 +241,29 @@ const Show = ({ user }) => {
                           className={styles.toolsIcon}
                         />
                       )}
-                    </div>
+                    </Link>
                   );
                 })}
               </div>
             </div>
+          </div>
+          <div className={styles.statsC}>
+            <div className={styles.statsText}>Stats</div>
+            <div className={styles.info}>
+              <div className={styles.infoPost}>
+                <p>No. Of Posts</p>
+                <p>{post.length}</p>
+                <p></p>
+              </div>
+              <div className={styles.infoPost}>
+                <p>Participation</p>
+                <p>{numCompetitions}</p>
+                <p></p>
+              </div>
+            </div>
+          </div>
+          <div className={styles.quote}>
+            <p>{quote}</p>
           </div>
         </div>
         <div className={styles.rank}>
@@ -264,7 +284,13 @@ const Show = ({ user }) => {
           </div>
         </div>
       </div>
-      {/* <div className={styles.lower}>{post.map()}</div> */}
+      <div className={styles.lower}>
+        {post.map((Post) => {
+          return <Link to={Post.link} className={styles.post}>
+            <img src={Post.img} alt={Post.link} className={styles.postImg} />
+          </Link>;
+        })}
+      </div>
     </div>
   );
 };
