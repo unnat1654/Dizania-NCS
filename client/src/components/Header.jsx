@@ -27,7 +27,7 @@ const Header = () => {
           {auth?.user ? (
             <>
               <li>
-                <Link className="loggedin-li" to="/profile">
+                <Link className="loggedin-li" to="/show_profile">
                   PROFILE
                 </Link>
               </li>
