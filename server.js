@@ -29,13 +29,16 @@ app.use(bodyParser.urlencoded({ extended: true, limit: "10mb" }));
 app.use(express.json());
 app.use(morgan("dev"));
 app.use(cors());
-app.use(express.static(path.join(__dirname, "./client/dist")));
+app.use(express.static(path.join(__dirname, "./dist")));
 
 //routes
 app.use("/v1/auth", authRoutes);
 app.use("/v1/post", postRoutes);
 app.use("/v1/tool", toolRoutes);
 
+app.use("*", function (req, res) {
+  res.sendFile(path.join(__dirname, "./dist/index.html"));
+});
 //rest api
 app.get("/123", (req, res) => {
   res.status(200).send({
