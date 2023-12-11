@@ -3,6 +3,7 @@ import styles from "./Create.module.css";
 import header from "./assets/header.svg";
 import profileImg from "./assets/img.svg";
 import axios from "axios";
+import Layout from "../../../components/Layout";
 
 const Create = () => {
   const [name, setName] = useState("");
@@ -67,87 +68,89 @@ const Create = () => {
   };
 
   return (
-    <div className={styles.container}>
-      <div className={styles.headerContainer}>
-        <img src={header} alt="" className={styles.img} />
-      </div>
-      <form onSubmit={handleSubmit} className={styles.form}>
-        <div className={styles.upper}>
-          <div className={styles.imgContainer} onClick={handleImageClick}>
-            <p className={styles.addText}>Add Image</p>
-            <img
-              src={profileImg}
-              alt="profile Img"
-              style={{ width: "100%", height: "100%" }}
-            />
-            <input
-              type="file"
-              accept="image/*"
-              ref={fileInputRef}
-              style={{ display: "none" }}
-              onChange={handleFileChange}
-            />
+    <Layout>
+      <div className={styles.container}>
+        <div className={styles.headerContainer}>
+          <img src={header} alt="" className={styles.img} />
+        </div>
+        <form onSubmit={handleSubmit} className={styles.form}>
+          <div className={styles.upper}>
+            <div className={styles.imgContainer} onClick={handleImageClick}>
+              <p className={styles.addText}>Add Image</p>
+              <img
+                src={profileImg}
+                alt="profile Img"
+                style={{ width: "100%", height: "100%" }}
+              />
+              <input
+                type="file"
+                accept="image/*"
+                ref={fileInputRef}
+                style={{ display: "none" }}
+                onChange={handleFileChange}
+              />
+            </div>
+            <div className={styles.nameContainer}>
+              <label htmlFor="name" className={styles.label}>
+                <input
+                  type="text"
+                  className={styles.input}
+                  placeholder="Name"
+                  value={name}
+                  onChange={(e) => setName(e.target.value)}
+                />
+              </label>
+              <label htmlFor="bio" className={styles.label}>
+                <textarea
+                  name="bio"
+                  id="bio"
+                  cols="30"
+                  rows="10"
+                  placeholder="Add Bio"
+                  className={styles.input}
+                  value={bio}
+                  onChange={(e) => setBio(e.target.value)}
+                />
+              </label>
+            </div>
           </div>
-          <div className={styles.nameContainer}>
+          <div className={styles.lower}>
+            <div className={styles.customSelect}>
+              <select
+                className={`${styles.select}`}
+                value={selectedConnections}
+                onChange={handleDropdownChangeConnections}
+              >
+                <option value="Add Connections">Add Connections</option>
+                <option value="linkedin">LinkedIn</option>
+                <option value="Instagram">Instagram</option>
+                <option value="Twitter">Twitter</option>
+              </select>
+            </div>
+            <div className={styles.customSelect}>
+              <select
+                className={`${styles.select}`}
+                value={selectedTools}
+                onChange={handleDropdownChangeTools}
+              >
+                <option value="Add Tools">Add Tools</option>
+                <option value="Figma">Figma</option>
+              </select>
+            </div>
             <label htmlFor="name" className={styles.label}>
               <input
                 type="text"
                 className={styles.input}
-                placeholder="Name"
-                value={name}
-                onChange={(e) => setName(e.target.value)}
-              />
-            </label>
-            <label htmlFor="bio" className={styles.label}>
-              <textarea
-                name="bio"
-                id="bio"
-                cols="30"
-                rows="10"
-                placeholder="Add Bio"
-                className={styles.input}
-                value={bio}
-                onChange={(e) => setBio(e.target.value)}
+                placeholder="Add Your Design Qoute"
               />
             </label>
           </div>
-        </div>
-        <div className={styles.lower}>
-          <div className={styles.customSelect}>
-            <select
-              className={`${styles.select}`}
-              value={selectedConnections}
-              onChange={handleDropdownChangeConnections}
-            >
-              <option value="Add Connections">Add Connections</option>
-              <option value="linkedin">LinkedIn</option>
-              <option value="Instagram">Instagram</option>
-              <option value="Twitter">Twitter</option>
-            </select>
+          <div className={styles.btnWrap}>
+            <button className={styles.btn}>Continue</button>
           </div>
-          <div className={styles.customSelect}>
-            <select
-              className={`${styles.select}`}
-              value={selectedTools}
-              onChange={handleDropdownChangeTools}
-            >
-              <option value="Add Tools">Add Tools</option>
-              <option value="Figma">Figma</option>
-            </select>
-          </div>
-          <label htmlFor="name" className={styles.label}>
-            <input
-              type="text"
-              className={styles.input}
-              placeholder="Add Your Design Qoute"
-            />
-          </label>
-        </div>
-        <div className={styles.btnWrap}>
-          <button className={styles.btn}>Continue</button>
-        </div>
-      </form>
-    </div>
+        </form>
+      </div>
+    </Layout>
   );
 };
 

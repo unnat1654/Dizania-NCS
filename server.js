@@ -8,8 +8,14 @@ import postRoutes from "./Routes/postRoutes.js";
 import toolRoutes from "./Routes/toolRoutes.js";
 import connectDB from "./Config/db.js";
 import bodyParser from "body-parser";
+import path from "path";
+import { fileURLToPath } from "url";
+
 //env Configuration
 dotenv.config();
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 //connecting to Database
 connectDB();
@@ -23,6 +29,7 @@ app.use(bodyParser.urlencoded({ extended: true, limit: "10mb" }));
 app.use(express.json());
 app.use(morgan("dev"));
 app.use(cors());
+app.use(express.static(path.join(__dirname, "./client/dist")));
 
 //routes
 app.use("/v1/auth", authRoutes);

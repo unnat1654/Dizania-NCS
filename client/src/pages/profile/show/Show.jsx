@@ -15,6 +15,7 @@ import adobe_photoshop from "./assets/adobe-photoshop.png";
 import sketch from "./assets/sketch.png";
 import adobe_xd from "./assets/adobe-xd.png";
 import adobe_indesign from "./assets/adobe-indesign.png";
+import Layout from "../../../components/Layout";
 
 const Show = ({ user }) => {
   console.log("Used Data from Show.jsx", user);
@@ -77,7 +78,7 @@ const Show = ({ user }) => {
         platform: "facebook",
       },
     ],
-    tools: ["figma", "adobe-indesign", "adobe-photoshop","sketch","adobe-xd"],
+    tools: ["figma", "adobe-indesign", "adobe-photoshop", "sketch", "adobe-xd"],
     most_used: ["figma", "adobe-xd", "sketch"],
     rank: 1400,
     numCompetitions: 69,
@@ -155,106 +156,78 @@ const Show = ({ user }) => {
     profilePicture: img,
   } = testData;
   return (
-    <div className={styles.show}>
-      <div className={styles.upper}>
-        <div className={styles.textWrap}>
-          <div className={styles.profile}>
-            <div className={styles.profileImgC}>
-              <img src={img} alt="" className={styles.profieImage} />
-            </div>
-            <div className={styles.nameC}>
-              <p className={styles.name}>{name}</p>
-              <div className={styles.starsC}>
-                {Array.from({ length: stars }, (_, index) => (
-                  <img
-                    key={index}
-                    src={starImg}
-                    alt={`Star ${index + 1}`}
-                    className={styles.star}
-                  />
-                ))}
+    <Layout>
+      <div className={styles.show}>
+        <div className={styles.upper}>
+          <div className={styles.textWrap}>
+            <div className={styles.profile}>
+              <div className={styles.profileImgC}>
+                <img src={img} alt="" className={styles.profieImage} />
+              </div>
+              <div className={styles.nameC}>
+                <p className={styles.name}>{name}</p>
+                <div className={styles.starsC}>
+                  {Array.from({ length: stars }, (_, index) => (
+                    <img
+                      key={index}
+                      src={starImg}
+                      alt={`Star ${index + 1}`}
+                      className={styles.star}
+                    />
+                  ))}
+                </div>
               </div>
             </div>
-          </div>
-          <div className={styles.bio}>{bio}</div>
-          <div className={styles.connectC}>
-            <div className={styles.connectText}>Connect</div>
-            <div className={styles.connectIconsC}>
-              {connections.map((connects) => {
-                return (
-                  <div className={styles.connectW}>
-                    {connects.platform == "linkedin" ? (
-                      <img
-                        src={linkedin}
-                        alt=""
-                        className={styles.connectsImg}
-                      />
-                    ) : connects.platform == "instagram" ? (
-                      <img
-                        src={instagram}
-                        alt=""
-                        className={styles.connectsImg}
-                      />
-                    ) : connects.platform == "behance" ? (
-                      <img
-                        src={behance}
-                        alt=""
-                        className={styles.connectsImg}
-                      />
-                    ) : connects.platform === "dribble" ? (
-                      <img
-                        src={dribble}
-                        alt=""
-                        className={styles.connectsImg}
-                      />
-                    ) : (
-                      <img
-                        src={facebook}
-                        alt=""
-                        className={styles.connectsImg}
-                      />
-                    )}
-                  </div>
-                );
-              })}
-            </div>
-            <p></p>
-          </div>
-          <div className={styles.toolsC}>
-            <div className={styles.toolsText}>Tools</div>
-            <div className={styles.toolsW}>
-              {tools.map((tool) => {
-                return (
-                  <Link to="/" className={styles.toolW}>
-                    {tool === "figma" ? (
-                      <img src={figma} alt="" className={styles.toolsIcon} />
-                    ) : tool === "adobe-photoshop" ? (
-                      <img
-                        src={adobe_photoshop}
-                        alt=""
-                        className={styles.toolsIcon}
-                      />
-                    ) : tool === "sketch" ? (
-                      <img src={sketch} alt="" className={styles.toolsIcon} />
-                    ) : tool === "adobe-xd" ? (
-                      <img src={adobe_xd} alt="" className={styles.toolsIcon} />
-                    ) : (
-                      <img
-                        src={adobe_indesign}
-                        alt=""
-                        className={styles.toolsIcon}
-                      />
-                    )}
-                  </Link>
-                );
-              })}
-            </div>
-            <div className={styles.mostused}>
-              <div className={styles.toolsText}>Most used tool</div>
-              <div className={styles.toolsW}>
-                {most_used.map((tool) => {
+            <div className={styles.bio}>{bio}</div>
+            <div className={styles.connectC}>
+              <div className={styles.connectText}>Connect</div>
+              <div className={styles.connectIconsC}>
+                {connections.map((connects) => {
                   return (
-                    <Link className={styles.toolW}>
+                    <div className={styles.connectW}>
+                      {connects.platform == "linkedin" ? (
+                        <img
+                          src={linkedin}
+                          alt=""
+                          className={styles.connectsImg}
+                        />
+                      ) : connects.platform == "instagram" ? (
+                        <img
+                          src={instagram}
+                          alt=""
+                          className={styles.connectsImg}
+                        />
+                      ) : connects.platform == "behance" ? (
+                        <img
+                          src={behance}
+                          alt=""
+                          className={styles.connectsImg}
+                        />
+                      ) : connects.platform === "dribble" ? (
+                        <img
+                          src={dribble}
+                          alt=""
+                          className={styles.connectsImg}
+                        />
+                      ) : (
+                        <img
+                          src={facebook}
+                          alt=""
+                          className={styles.connectsImg}
+                        />
+                      )}
+                    </div>
+                  );
+                })}
+              </div>
+              <p></p>
+            </div>
+            <div className={styles.toolsC}>
+              <div className={styles.toolsText}>Tools</div>
+              <div className={styles.toolsW}>
+                {tools.map((tool) => {
+                  return (
+                    <Link to="/" className={styles.toolW}>
                       {tool === "figma" ? (
                         <img src={figma} alt="" className={styles.toolsIcon} />
                       ) : tool === "adobe-photoshop" ? (
@@ -282,55 +255,101 @@ const Show = ({ user }) => {
                   );
                 })}
               </div>
+              <div className={styles.mostused}>
+                <div className={styles.toolsText}>Most used tool</div>
+                <div className={styles.toolsW}>
+                  {most_used.map((tool) => {
+                    return (
+                      <Link className={styles.toolW}>
+                        {tool === "figma" ? (
+                          <img
+                            src={figma}
+                            alt=""
+                            className={styles.toolsIcon}
+                          />
+                        ) : tool === "adobe-photoshop" ? (
+                          <img
+                            src={adobe_photoshop}
+                            alt=""
+                            className={styles.toolsIcon}
+                          />
+                        ) : tool === "sketch" ? (
+                          <img
+                            src={sketch}
+                            alt=""
+                            className={styles.toolsIcon}
+                          />
+                        ) : tool === "adobe-xd" ? (
+                          <img
+                            src={adobe_xd}
+                            alt=""
+                            className={styles.toolsIcon}
+                          />
+                        ) : (
+                          <img
+                            src={adobe_indesign}
+                            alt=""
+                            className={styles.toolsIcon}
+                          />
+                        )}
+                      </Link>
+                    );
+                  })}
+                </div>
+              </div>
+            </div>
+            <div className={styles.statsC}>
+              <div className={styles.statsText}>Stats</div>
+              <div className={styles.info}>
+                <div className={styles.infoPost}>
+                  <p>No. Of Posts</p>
+                  <p>{post.length}</p>
+                  <p></p>
+                </div>
+                <div className={styles.infoPost}>
+                  <p>Participation</p>
+                  <p>{numCompetitions}</p>
+                  <p></p>
+                </div>
+              </div>
+            </div>
+            <div className={styles.quote}>
+              <p>{quote}</p>
             </div>
           </div>
-          <div className={styles.statsC}>
-            <div className={styles.statsText}>Stats</div>
-            <div className={styles.info}>
-              <div className={styles.infoPost}>
-                <p>No. Of Posts</p>
-                <p>{post.length}</p>
-                <p></p>
-              </div>
-              <div className={styles.infoPost}>
-                <p>Participation</p>
-                <p>{numCompetitions}</p>
-                <p></p>
+          <div className={styles.rank}>
+            <div className={styles.rankImgC}>
+              <img src={rankImg} alt="Rank" className={styles.badge} />
+            </div>
+            <p className={styles.ranktext}>RANK - {rank}</p>
+            <div className={styles.competitions}>
+              <p>No. Of Competitions Participated</p>
+              <p>{competition.participated}</p>
+            </div>
+            <div className={styles.streak}>
+              <p className={styles.ranktext}>STREAK</p>
+              <div className={styles.streaks}>
+                <p>Current Streak - {competition.currStreak} </p>
+                <p>Max Streak - {competition.maxStreak}</p>
               </div>
             </div>
-          </div>
-          <div className={styles.quote}>
-            <p>{quote}</p>
           </div>
         </div>
-        <div className={styles.rank}>
-          <div className={styles.rankImgC}>
-            <img src={rankImg} alt="Rank" className={styles.badge} />
-          </div>
-          <p className={styles.ranktext}>RANK - {rank}</p>
-          <div className={styles.competitions}>
-            <p>No. Of Competitions Participated</p>
-            <p>{competition.participated}</p>
-          </div>
-          <div className={styles.streak}>
-            <p className={styles.ranktext}>STREAK</p>
-            <div className={styles.streaks}>
-              <p>Current Streak - {competition.currStreak} </p>
-              <p>Max Streak - {competition.maxStreak}</p>
-            </div>
-          </div>
+        <div className={styles.lower}>
+          {post.map((Post) => {
+            return (
+              <Link to={Post.link} className={styles.post}>
+                <img
+                  src={Post.img}
+                  alt={Post.link}
+                  className={styles.postImg}
+                />
+              </Link>
+            );
+          })}
         </div>
       </div>
-      <div className={styles.lower}>
-        {post.map((Post) => {
-          return (
-            <Link to={Post.link} className={styles.post}>
-              <img src={Post.img} alt={Post.link} className={styles.postImg} />
-            </Link>
-          );
-        })}
-      </div>
-    </div>
+    </Layout>
   );
 };
 
