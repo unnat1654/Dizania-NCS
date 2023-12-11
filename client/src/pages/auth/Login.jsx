@@ -82,7 +82,6 @@ const Login = () => {
       <div>
         <div className="login-main">
           <span className="login-heading">LOG IN</span>
-          {JSON.stringify(auth)}
           <div className="login-box">
             <form>
               <input
