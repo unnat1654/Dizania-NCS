@@ -18,7 +18,7 @@ const Discover = () => {
       const { data } = await axios.get(
         `${
           import.meta.env.VITE_PUBLIC_API_URL
-        }/v1/post/get-posts?p=${page}&lmt=12`
+        }/v1/post/get-posts?p=${page}&lmt=1`
       );
       setPostList((prevItems) => [...prevItems, ...data.posts]);
       setPage((prevPage) => prevPage + 1);

@@ -3,7 +3,11 @@ import styles from "./Create.module.css";
 import header from "./assets/header.svg";
 import profileImg from "./assets/img.svg";
 import axios from "axios";
+<<<<<<< HEAD
+import Layout from "../../../components/Layout";
+=======
 import { useNavigate } from "react-router-dom";
+>>>>>>> 7e78f863d36821fe9cb48c0ecbf68c3e10a852fb
 
 const Create = () => {
   const [name, setName] = useState("");
@@ -82,6 +86,17 @@ const Create = () => {
   };
 
   return (
+<<<<<<< HEAD
+    <Layout>
+      <div className={styles.container}>
+        <div className={styles.headerContainer}>
+          <img src={header} alt="" className={styles.img} />
+        </div>
+        <form onSubmit={handleSubmit} className={styles.form}>
+          <div className={styles.upper}>
+            <div className={styles.imgContainer} onClick={handleImageClick}>
+              <p className={styles.addText}>Add Image</p>
+=======
     <div className={styles.container}>
       <div className={styles.headerContainer}>
         <img src={header} alt="" className={styles.img} />
@@ -97,11 +112,45 @@ const Create = () => {
                 style={{ width: "100%", height: "100%", borderRadius: "50%" }}
               />
             ) : (
+>>>>>>> 7e78f863d36821fe9cb48c0ecbf68c3e10a852fb
               <img
                 src={profileImg}
                 alt="profile Img"
                 style={{ width: "100%", height: "100%" }}
               />
+<<<<<<< HEAD
+              <input
+                type="file"
+                accept="image/*"
+                ref={fileInputRef}
+                style={{ display: "none" }}
+                onChange={handleFileChange}
+              />
+            </div>
+            <div className={styles.nameContainer}>
+              <label htmlFor="name" className={styles.label}>
+                <input
+                  type="text"
+                  className={styles.input}
+                  placeholder="Name"
+                  value={name}
+                  onChange={(e) => setName(e.target.value)}
+                />
+              </label>
+              <label htmlFor="bio" className={styles.label}>
+                <textarea
+                  name="bio"
+                  id="bio"
+                  cols="30"
+                  rows="10"
+                  placeholder="Add Bio"
+                  className={styles.input}
+                  value={bio}
+                  onChange={(e) => setBio(e.target.value)}
+                />
+              </label>
+            </div>
+=======
             )}
             <input
               type="file"
@@ -110,30 +159,47 @@ const Create = () => {
               style={{ display: "none" }}
               onChange={handleFileChange}
             />
+>>>>>>> 7e78f863d36821fe9cb48c0ecbf68c3e10a852fb
           </div>
-          <div className={styles.nameContainer}>
+          <div className={styles.lower}>
+            <div className={styles.customSelect}>
+              <select
+                className={`${styles.select}`}
+                value={selectedConnections}
+                onChange={handleDropdownChangeConnections}
+              >
+                <option value="Add Connections">Add Connections</option>
+                <option value="linkedin">LinkedIn</option>
+                <option value="Instagram">Instagram</option>
+                <option value="Twitter">Twitter</option>
+              </select>
+            </div>
+            <div className={styles.customSelect}>
+              <select
+                className={`${styles.select}`}
+                value={selectedTools}
+                onChange={handleDropdownChangeTools}
+              >
+                <option value="Add Tools">Add Tools</option>
+                <option value="Figma">Figma</option>
+              </select>
+            </div>
             <label htmlFor="name" className={styles.label}>
               <input
                 type="text"
                 className={styles.input}
-                placeholder="Name"
-                value={name}
-                onChange={(e) => setName(e.target.value)}
-              />
-            </label>
-            <label htmlFor="bio" className={styles.label}>
-              <textarea
-                name="bio"
-                id="bio"
-                cols="30"
-                rows="10"
-                placeholder="Add Bio"
-                className={styles.input}
-                value={bio}
-                onChange={(e) => setBio(e.target.value)}
+                placeholder="Add Your Design Qoute"
               />
             </label>
           </div>
+<<<<<<< HEAD
+          <div className={styles.btnWrap}>
+            <button className={styles.btn}>Continue</button>
+          </div>
+        </form>
+      </div>
+    </Layout>
+=======
         </div>
         <div className={styles.lower}>
           <div className={styles.customSelect}>
@@ -181,6 +247,7 @@ const Create = () => {
         </div>
       </form>
     </div>
+>>>>>>> 7e78f863d36821fe9cb48c0ecbf68c3e10a852fb
   );
 };
 
