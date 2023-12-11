@@ -174,6 +174,8 @@ export const createProfile = async (req, res) => {
   try {
     const { username, bio, connections, tools, image ,quote} = req.body;
 
+    console.log("From backend",req.body)
+
     const newProfile = new profileModel({
       username,
       displayName: username,
