@@ -88,11 +88,19 @@ const Create = () => {
         <div className={styles.upper}>
           <div className={styles.imgContainer} onClick={handleImageClick}>
             <p className={styles.addText}>Add Image</p>
-            <img
-              src={profileImg}
-              alt="profile Img"
-              style={{ width: "100%", height: "100%" }}
-            />
+            {selectedFile ? (
+              <img
+                src={URL.createObjectURL(selectedFile)}
+                alt="profile Img"
+                style={{ width: "100%", height: "100%",borderRadius:"50%" }}
+              />
+            ) : (
+              <img
+                src={profileImg}
+                alt="profile Img"
+                style={{ width: "100%", height: "100%" }}
+              />
+            )}
             <input
               type="file"
               accept="image/*"
