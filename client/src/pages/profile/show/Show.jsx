@@ -17,106 +17,143 @@ import adobe_xd from "./assets/adobe-xd.png";
 import adobe_indesign from "./assets/adobe-indesign.png";
 
 const Show = ({ user }) => {
-  // const {
-  //   name = "Ashline Rodrigoz",
-  //   stars = 4,
-  //   bio = "Passionate UI/UX Designer | 🎨 Creating Seamless Experiences |Problem Solver Extraordinaire | Let's Craft Digital Magic! ✨ #UIUXDesign",
-  //   quote = "Designing interfaces isn't just about pixels; it's about creating experiences that leave a lasting impression.",
-  //   post = [
-  //     {
-  //       img: { post },
-  //       link: "www.google.com",
-  //     },
-  //     {
-  //       img: { post },
-  //       link: "www.google.com",
-  //     },
-  //     {
-  //       img: { post },
-  //       link: "www.google.com",
-  //     },
-  //     {
-  //       img: { post },
-  //       link: "www.google.com",
-  //     },
-  //     {
-  //       img: { post },
-  //       link: "www.google.com",
-  //     },
-  //     {
-  //       img: { post },
-  //       link: "www.google.com",
-  //     },
-  //     {
-  //       img: { post },
-  //       link: "www.google.com",
-  //     },
-  //     {
-  //       img: { post },
-  //       link: "www.google.com",
-  //     },
-  //   ],
-  //   connections = ["linkedin", "behance", "instagram"],
-  //   tools = ["figma"],
-  //   rank = 1,
-  //   numCompetitions = 34,
-  //   currStreak = 24,
-  //   maxStreak = 62,
-  // } = user;
-  const name = "Ashline Rodrigoz";
-  const stars = 4;
-  const img = profileImg;
-  const bio =
-    "Passionate UI/UX Designer | 🎨 Creating Seamless Experiences |Problem Solver Extraordinaire | Let's Craft Digital Magic! ✨ #UIUXDesign";
-  const quote =
-    "Designing interfaces isn't just about pixels; it's about creating experiences that leave a lasting impression.";
-  const post = [
-    {
-      img: postImg,
-      link: "www.google.com",
+  console.log("Used Data from Show.jsx", user);
+  let testData = {
+    displayName: "Angelina Drako",
+    firstName: "John",
+    lastName: "Doe",
+    stars: 4,
+    bio: "Passionate UI/UX Designer | 🎨 Creating Seamless Experiences |Problem Solver Extraordinaire | Let's Craft Digital Magic! ✨ #UIUXDesign",
+    quote:
+      "Designing interfaces isn't just about pixels; it's about creating experiences that leave a lasting impression.",
+    post: [
+      {
+        img: postImg,
+        link: "www.google.com",
+      },
+      {
+        img: postImg,
+        link: "www.google.com",
+      },
+      {
+        img: postImg,
+        link: "www.google.com",
+      },
+      {
+        img: postImg,
+        link: "www.google.com",
+      },
+      {
+        img: postImg,
+        link: "www.google.com",
+      },
+      {
+        img: postImg,
+        link: "www.google.com",
+      },
+      {
+        img: postImg,
+        link: "www.google.com",
+      },
+      {
+        img: postImg,
+        link: "www.google.com",
+      },
+    ],
+    connections: [
+      {
+        platform: "linkedin",
+      },
+      {
+        platform: "behance",
+      },
+      {
+        platform: "instagram",
+      },
+      {
+        platform: "dribble",
+      },
+      {
+        platform: "facebook",
+      },
+    ],
+    tools: ["figma", "adobe-indesign", "adobe-photoshop","sketch","adobe-xd"],
+    most_used: ["figma", "adobe-xd", "sketch"],
+    rank: 1400,
+    numCompetitions: 69,
+    competition: {
+      participated: 141,
+      currStreak: 2,
+      maxStreak: 14,
     },
-    {
-      img: postImg,
-      link: "www.google.com",
-    },
-    {
-      img: postImg,
-      link: "www.google.com",
-    },
-    {
-      img: postImg,
-      link: "www.google.com",
-    },
-    {
-      img: postImg,
-      link: "www.google.com",
-    },
-    {
-      img: postImg,
-      link: "www.google.com",
-    },
-    {
-      img: postImg,
-      link: "www.google.com",
-    },
-    {
-      img: postImg,
-      link: "www.google.com",
-    },
-  ];
-  const connections = ["linkedin", "behance", "instagram", "dribble"];
-  const tools = [
-    "figma",
-    "adobe-photoshop",
-    "sketch",
-    "adobe-indesign",
-    "adobe-xd",
-  ];
-  const most_used = ["figma", "adobe-xd", "sketch"];
-  const rank = 1;
-  const numCompetitions = 34;
-  const currStreak = 24;
-  const maxStreak = 62;
+    profilePicture: "https://www.gravatar.com/avatar/?d=identicon",
+  };
+  const {
+    displayName: name,
+    firstName,
+    lastName,
+    stars = 4,
+    bio = "Passionate UI/UX Designer | 🎨 Creating Seamless Experiences |Problem Solver Extraordinaire | Let's Craft Digital Magic! ✨ #UIUXDesign",
+    quote = "Designing interfaces isn't just about pixels; it's about creating experiences that leave a lasting impression.",
+    post = [
+      {
+        img: { post },
+        link: "www.google.com",
+      },
+      {
+        img: { post },
+        link: "www.google.com",
+      },
+      {
+        img: { post },
+        link: "www.google.com",
+      },
+      {
+        img: { post },
+        link: "www.google.com",
+      },
+      {
+        img: { post },
+        link: "www.google.com",
+      },
+      {
+        img: { post },
+        link: "www.google.com",
+      },
+      {
+        img: { post },
+        link: "www.google.com",
+      },
+      {
+        img: { post },
+        link: "www.google.com",
+      },
+    ],
+    connections = [
+      {
+        platform: "linkedin",
+      },
+      {
+        platform: "behance",
+      },
+      {
+        platform: "instagram",
+      },
+      {
+        platform: "dribble",
+      },
+      {
+        platform: "facebook",
+      },
+    ],
+    tools = ["figma"],
+    most_used,
+    rank = 1,
+
+    numCompetitions = 34,
+    competition,
+    profilePicture: img,
+  } = testData;
   return (
     <div className={styles.show}>
       <div className={styles.upper}>
@@ -146,25 +183,25 @@ const Show = ({ user }) => {
               {connections.map((connects) => {
                 return (
                   <div className={styles.connectW}>
-                    {connects === "linkedin" ? (
+                    {connects.platform == "linkedin" ? (
                       <img
                         src={linkedin}
                         alt=""
                         className={styles.connectsImg}
                       />
-                    ) : connects === "instagram" ? (
+                    ) : connects.platform == "instagram" ? (
                       <img
                         src={instagram}
                         alt=""
                         className={styles.connectsImg}
                       />
-                    ) : connects === "behance" ? (
+                    ) : connects.platform == "behance" ? (
                       <img
                         src={behance}
                         alt=""
                         className={styles.connectsImg}
                       />
-                    ) : connects === "dribble" ? (
+                    ) : connects.platform === "dribble" ? (
                       <img
                         src={dribble}
                         alt=""
@@ -273,22 +310,24 @@ const Show = ({ user }) => {
           <p className={styles.ranktext}>RANK - {rank}</p>
           <div className={styles.competitions}>
             <p>No. Of Competitions Participated</p>
-            <p>{numCompetitions}</p>
+            <p>{competition.participated}</p>
           </div>
           <div className={styles.streak}>
             <p className={styles.ranktext}>STREAK</p>
             <div className={styles.streaks}>
-              <p>Current Streak - {currStreak} </p>
-              <p>Max Streak - {maxStreak}</p>
+              <p>Current Streak - {competition.currStreak} </p>
+              <p>Max Streak - {competition.maxStreak}</p>
             </div>
           </div>
         </div>
       </div>
       <div className={styles.lower}>
         {post.map((Post) => {
-          return <Link to={Post.link} className={styles.post}>
-            <img src={Post.img} alt={Post.link} className={styles.postImg} />
-          </Link>;
+          return (
+            <Link to={Post.link} className={styles.post}>
+              <img src={Post.img} alt={Post.link} className={styles.postImg} />
+            </Link>
+          );
         })}
       </div>
     </div>
