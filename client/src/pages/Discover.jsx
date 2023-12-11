@@ -15,7 +15,7 @@ const Discover = () => {
   const getPosts = async () => {
     setIsLoading(true);
     try {
-      const { data } = await axios.get("/v1/post/get-posts?p=${page}&lmt=1");
+      const { data } = await axios.get("/v1/post/get-posts?p=${page}&lmt=12");
       setPostList((prevItems) => [...prevItems, ...data.posts]);
       setPage((prevPage) => prevPage + 1);
     } catch (error) {
