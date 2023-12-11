@@ -30,15 +30,12 @@ const Upload = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const { data } = await axios.post(
-        `${import.meta.env.VITE_PUBLIC_API_URL}/v1/post/create-post`,
-        {
-          user: auth?.user?._id,
-          image,
-          caption,
-          tool: usedTool,
-        }
-      );
+      const { data } = await axios.post("/v1/post/create-post", {
+        user: auth?.user?._id,
+        image,
+        caption,
+        tool: usedTool,
+      });
       if (data?.success) {
         toast.success("Post Created Successfully");
         navigate("/discover");
@@ -73,9 +70,7 @@ const Upload = () => {
     try {
       const ls_tools = JSON.parse(localStorage.getItem("tools"));
       if (!ls_tools) {
-        const { data } = await axios.get(
-          `${import.meta.env.VITE_PUBLIC_API_URL}/v1/tool/get-tools`
-        );
+        const { data } = await axios.get("/v1/tool/get-tools");
         if (data) {
           localStorage.setItem("tools", JSON.stringify(data?.tools));
         }

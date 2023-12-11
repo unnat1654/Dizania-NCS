@@ -15,11 +15,7 @@ const Discover = () => {
   const getPosts = async () => {
     setIsLoading(true);
     try {
-      const { data } = await axios.get(
-        `${
-          import.meta.env.VITE_PUBLIC_API_URL
-        }/v1/post/get-posts?p=${page}&lmt=1`
-      );
+      const { data } = await axios.get("/v1/post/get-posts?p=${page}&lmt=1");
       setPostList((prevItems) => [...prevItems, ...data.posts]);
       setPage((prevPage) => prevPage + 1);
     } catch (error) {
@@ -43,10 +39,11 @@ const Discover = () => {
         return;
       }
       like ? setLiked(true) : setLiked(false);
-      const { data } = await axios.patch(
-        `${import.meta.env.VITE_PUBLIC_API_URL}/v1/post/like-post`,
-        { like, post_id, user_id: auth?.user?._id }
-      );
+      const { data } = await axios.patch("/v1/post/like-post", {
+        like,
+        post_id,
+        user_id: auth?.user?._id,
+      });
     } catch (error) {
       console.log(error);
     }

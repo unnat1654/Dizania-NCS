@@ -40,10 +40,10 @@ const ForgotPassword = () => {
         setLoading(false);
         return;
       }
-      const { data } = await axios.patch(
-        `${import.meta.env.VITE_PUBLIC_API_URL}/v1/auth/forgot-password`,
-        { email, newPassword: password }
-      );
+      const { data } = await axios.patch("/v1/auth/forgot-password", {
+        email,
+        newPassword: password,
+      });
       if (data?.success) {
         toast.success(data?.message, {
           position: "top-right",
