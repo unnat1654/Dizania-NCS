@@ -24,22 +24,22 @@ const Footer = () => {
         <li>
           <Link to="mailto:ecstasyteam9@gmail.com">ecstasyteam9@gmail.com</Link>
         </li>
-        <li>
+        <li className="socialmedia-links">
           <Link to="/">
             <img src={instagram} className="f-instagram" />
           </Link>
         </li>
-        <li>
+        <li className="socialmedia-links">
           <Link to="/">
             <img src={twitter} className="f-twitter" />
           </Link>
         </li>
-        <li>
+        <li className="socialmedia-links">
           <Link to="/">
             <img src={linkedin} className="f-linkedin" />
           </Link>
         </li>
-        <li>
+        <li className="socialmedia-links">
           <Link to="/">
             <img src={facebook} className="f-facebook" />
           </Link>
