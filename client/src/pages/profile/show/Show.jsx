@@ -29,9 +29,7 @@ const Show = ({ user }) => {
     if (!initialProfileData) {
       const fetchProfileData = async () => {
         try {
-          const apiUrl = `${
-            import.meta.env.VITE_PUBLIC_API_URL
-          }/v1/auth/create-profile`;
+          const apiUrl = "/v1/auth/create-profile";
           const response = await axios.get(apiUrl);
           const fetchedProfileData = response.data.profile;
 

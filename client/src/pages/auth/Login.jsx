@@ -22,10 +22,7 @@ const Login = () => {
     e.preventDefault();
     try {
       setLoading(true);
-      const { data } = await axios.post(
-        `${import.meta.env.VITE_PUBLIC_API_URL}/v1/auth/login`,
-        { email, password }
-      );
+      const { data } = await axios.post("/v1/auth/login", { email, password });
       if (data?.success) {
         setAuth({
           ...auth,

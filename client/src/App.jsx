@@ -10,7 +10,7 @@ import Create from "./pages/profile/create/Create";
 import Show from "./pages/profile/show/Show";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
-import Discover from "./pages/discover";
+import Discover from "./pages/Discover";
 import Participate from "./pages/Participate";
 
 function App() {

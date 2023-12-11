@@ -28,10 +28,11 @@ const Signup = () => {
       e.preventDefault();
       setLoading(true);
       if (password === reEnterPassword) {
-        const { data } = await axios.post(
-          `${import.meta.env.VITE_PUBLIC_API_URL}/v1/auth/register`,
-          { username: userName, email, password }
-        );
+        const { data } = await axios.post("/v1/auth/register", {
+          username: userName,
+          email,
+          password,
+        });
         if (data?.success) {
           toast.success(data?.message, {
             position: "top-right",
