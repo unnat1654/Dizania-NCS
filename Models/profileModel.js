@@ -9,17 +9,9 @@ const profileSchema = new mongoose.Schema(
       ref: "Users",
       required: true,
     },
-
-    // ////////////////////
-    displayName: {
-      type: String,
-      required: true,
+    displayName:{
+      type:String
     },
-    firstName: String,
-    lastName: String,
-    // image: {
-    //   type: String,
-    // },
     profilePicture: {
       type: String,
       default: "https://www.gravatar.com/avatar/?d=identicon",
@@ -30,7 +22,6 @@ const profileSchema = new mongoose.Schema(
     // },
     bio: {
       type: String,
-      maxlength: 50,
       default:
         "Passionate UI/UX Designer | 🎨 Creating Seamless Experiences |Problem Solver Extraordinaire | Let's Craft Digital Magic! ✨ #UIUXDesign",
     },
@@ -131,7 +122,6 @@ const profileSchema = new mongoose.Schema(
     },
     quote: {
       type: String,
-      maxlength: 100,
       default:
         "Designing interfaces isn't just about pixels; it's about creating experiences that leave a lasting impression.",
     },

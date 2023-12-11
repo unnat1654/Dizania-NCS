@@ -172,14 +172,16 @@ export const deleteAccountController = async (req, res) => {};
 // create profile
 export const createProfile = async (req, res) => {
   try {
-    const { name, bio, connections, tools, image } = req.body;
+    const { username, bio, connections, tools, image ,quote} = req.body;
 
     const newProfile = new profileModel({
-      name,
+      username,
+      displayName: username,
       bio,
       connections,
       tools,
-      image,
+      profilePicture: image,
+      quote
     });
 
     // Save the profile data to MongoDB

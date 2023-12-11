@@ -11,6 +11,7 @@ const Create = () => {
   const [selectedConnections, setSelectedConnections] = useState([]);
   const [selectedTools, setSelectedTools] = useState([]);
   const [selectedFile, setSelectedFile] = useState("");
+  const [quote, setQuote] = useState("");
   const navigate = useNavigate();
   const handleDropdownChangeConnections = (event) => {
     const selectedValue = event.target.value;
@@ -54,11 +55,12 @@ const Create = () => {
       }/v1/auth/create-profile`;
 
       const formData = {
-        name,
+        username: name,
         bio,
         connections: selectedConnections,
         tools: selectedTools,
         image: selectedFile,
+        quote,
       };
 
       console.log(formData);
@@ -92,7 +94,7 @@ const Create = () => {
               <img
                 src={URL.createObjectURL(selectedFile)}
                 alt="profile Img"
-                style={{ width: "100%", height: "100%",borderRadius:"50%" }}
+                style={{ width: "100%", height: "100%", borderRadius: "50%" }}
               />
             ) : (
               <img
@@ -167,6 +169,8 @@ const Create = () => {
           <label htmlFor="name" className={styles.label}>
             <input
               type="text"
+              value={quote}
+              onChange={(e) => setQuote(e.target.value)}
               className={styles.input}
               placeholder="Add Your Design Qoute"
             />
