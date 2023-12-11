@@ -3,22 +3,29 @@ import styles from "./Create.module.css";
 import header from "./assets/header.svg";
 import profileImg from "./assets/img.svg";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 const Create = () => {
   const [name, setName] = useState("");
   const [bio, setBio] = useState("");
-  const [selectedConnections, setSelectedConnections] = useState("");
-  const [selectedTools, setSelectedTools] = useState("");
+  const [selectedConnections, setSelectedConnections] = useState([]);
+  const [selectedTools, setSelectedTools] = useState([]);
   const [selectedFile, setSelectedFile] = useState("");
+  const navigate = useNavigate();
   const handleDropdownChangeConnections = (event) => {
-    if (event.target.value !== "Add Connections") {
-      setSelectedConnections(event.target.value);
+    const selectedValue = event.target.value;
+    if (selectedValue !== "Add Connections") {
+      setSelectedConnections((prevConnections) => [
+        ...prevConnections,
+        selectedValue,
+      ]);
     }
   };
 
   const handleDropdownChangeTools = (event) => {
-    if (event.target.value !== "Add Tools") {
-      setSelectedTools(event.target.value);
+    const selectedValue = event.target.value;
+    if (selectedValue !== "Add Tools") {
+      setSelectedTools((prevTools) => [...prevTools, selectedValue]);
     }
   };
 
@@ -42,7 +49,9 @@ const Create = () => {
     e.preventDefault();
 
     try {
-      const apiUrl = "https://your-backend-api.com/submit";
+      const apiUrl = `${
+        import.meta.env.VITE_PUBLIC_API_URL
+      }/v1/auth/create-profile`;
 
       const formData = {
         name,
@@ -51,16 +60,20 @@ const Create = () => {
         tools: selectedTools,
         image: selectedFile,
       };
+
       console.log(formData);
-      // const response = await axios.post(apiUrl, formData, {
-      //   headers: {
-      //     'Content-Type': 'multipart/form-data',
-      //   },
-      // });
+      const response = await axios.post(apiUrl, formData, {
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+      });
 
-      // console.log('Response from server:', response.data);
+      console.log("Response from server:", response.data);
 
-      // Handle the response as needed
+      const profileData = response.data.profile;
+
+      // Use navigate to go to show_profile with profile data
+      navigate("/show_profile", { state: { profile: profileData } });
     } catch (error) {
       console.error("Error submitting data:", error);
     }
@@ -118,11 +131,14 @@ const Create = () => {
               className={`${styles.select}`}
               value={selectedConnections}
               onChange={handleDropdownChangeConnections}
+              // multiple
             >
               <option value="Add Connections">Add Connections</option>
               <option value="linkedin">LinkedIn</option>
-              <option value="Instagram">Instagram</option>
-              <option value="Twitter">Twitter</option>
+              <option value="instagram">Instagram</option>
+              <option value="twitter">Twitter</option>
+              <option value="facebook">Facebook</option>
+              <option value="behance">Behance</option>
             </select>
           </div>
           <div className={styles.customSelect}>
@@ -130,9 +146,14 @@ const Create = () => {
               className={`${styles.select}`}
               value={selectedTools}
               onChange={handleDropdownChangeTools}
+              // multiple
             >
               <option value="Add Tools">Add Tools</option>
               <option value="Figma">Figma</option>
+              <option value="adobe-photoshop">Adobe Photoshop</option>
+              <option value="sketch">Sketch</option>
+              <option value="adobe-indesign">Adobe Indesign</option>
+              <option value="adobe-xd">Adobe Xd</option>
             </select>
           </div>
           <label htmlFor="name" className={styles.label}>

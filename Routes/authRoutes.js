@@ -4,6 +4,8 @@ import {
   loginController,
   forgotPasswordController,
   deleteAccountController,
+  createProfile,
+  showProfile
 } from "../Controllers/authController.js";
 import { checkSignIn } from "../Middlewares/authMiddleware.js";
 
@@ -23,6 +25,12 @@ router.patch("/forgot-password", forgotPasswordController);
 
 //Delete account || Method Delete
 router.delete("/delete-account", checkSignIn, deleteAccountController);
+
+// Create User Profile || Method Post
+router.post("/create-profile",createProfile)
+
+// Get User Profile || Method Get
+router.post("show_profile",showProfile)
 
 //export router
 export default router;

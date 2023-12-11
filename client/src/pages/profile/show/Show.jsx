@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import styles from "./Show.module.css";
 import postImg from "./assets/post.png";
 import rankImg from "./assets/rank.svg";
@@ -17,7 +17,33 @@ import adobe_xd from "./assets/adobe-xd.png";
 import adobe_indesign from "./assets/adobe-indesign.png";
 
 const Show = ({ user }) => {
+  const location = useLocation();
   console.log("Used Data from Show.jsx", user);
+  const { profile: initialProfileData } = location.state || {};
+  console.log("profileData", profileData);
+  const [profileData, setProfileData] = useState(initialProfileData);
+
+  useEffect(() => {
+    // Fetch profile data from the backend if location.state is not available
+    if (!initialProfileData) {
+      const fetchProfileData = async () => {
+        try {
+          const apiUrl = `${
+            import.meta.env.VITE_PUBLIC_API_URL
+          }/v1/auth/create-profile`;
+          const response = await axios.get(apiUrl);
+          const fetchedProfileData = response.data.profile;
+
+          setProfileData(fetchedProfileData);
+        } catch (error) {
+          console.error("Error fetching profile data:", error);
+        }
+      };
+
+      fetchProfileData();
+    }
+  }, [initialProfileData]);
+
   let testData = {
     displayName: "Angelina Drako",
     firstName: "John",
@@ -77,7 +103,7 @@ const Show = ({ user }) => {
         platform: "facebook",
       },
     ],
-    tools: ["figma", "adobe-indesign", "adobe-photoshop","sketch","adobe-xd"],
+    tools: ["figma", "adobe-indesign", "adobe-photoshop", "sketch", "adobe-xd"],
     most_used: ["figma", "adobe-xd", "sketch"],
     rank: 1400,
     numCompetitions: 69,
@@ -153,7 +179,7 @@ const Show = ({ user }) => {
     numCompetitions = 34,
     competition,
     profilePicture: img,
-  } = testData;
+  } = profileData;
   return (
     <div className={styles.show}>
       <div className={styles.upper}>
