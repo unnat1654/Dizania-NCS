@@ -41,6 +41,7 @@ const Upload = () => {
       );
       if (data?.success) {
         toast.success("Post Created Successfully");
+        navigate("/discover");
       } else {
         toast.error(data?.message, {
           position: "top-right",
@@ -142,7 +143,20 @@ const Upload = () => {
             <button
               className="submit-button"
               onClick={() => {
-                setPage(2);
+                if (image) {
+                  setPage(2);
+                } else {
+                  toast.error("Please upload an image", {
+                    position: "top-right",
+                    autoClose: 5000,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: undefined,
+                    theme: "light",
+                  });
+                }
               }}
             >
               Upload

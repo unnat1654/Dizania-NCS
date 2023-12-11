@@ -1,5 +1,6 @@
 import postModel from "../Models/postModel.js";
 import { cloudinary } from "../Config/cloudinary.js";
+import userModel from "../Models/userModel.js";
 
 //create post || Method Post
 export const createPostController = async (req, res) => {
@@ -38,30 +39,16 @@ export const getPostsController = async (req, res) => {
     const posts = await postModel
       .find({})
       .sort({ createdAt: -1 })
-      .skip(offset + 1)
+      .skip(offset)
       .limit(lmt)
-      .select("image");
+      .populate("user", "username")
+      .select("image user caption");
 
-    //if page is 1 then offset is 0 then first-post will be sent otherwise only posts will be sent
-    if (!offset) {
-      const firstpost = await postModel
-        .find({})
-        .sort({ createdAt: -1 })
-        .limit(1)
-        .populate("user", "username");
-      res.status(200).send({
-        success: true,
-        message: "Posts found Successfully",
-        posts,
-        firstpost,
-      });
-    } else {
-      res.status(200).send({
-        success: true,
-        message: "Posts found Successfully",
-        posts,
-      });
-    }
+    res.status(200).send({
+      success: true,
+      message: "Posts found Successfully",
+      posts,
+    });
   } catch (error) {
     console.log(error);
     res.status(500).send({
@@ -72,6 +59,7 @@ export const getPostsController = async (req, res) => {
   }
 };
 
+//getting user posts || Method Get
 export const getUserPostsController = async (req, res) => {
   const { uid, p } = req.query;
   try {
@@ -93,5 +81,34 @@ export const getUserPostsController = async (req, res) => {
       message: "Error while getting user posts",
       error,
     });
+  }
+};
+
+//liking and disliking post || method patch
+export const likePostController = async (req, res) => {
+  const { like, post_id, user_id } = req.body;
+  try {
+    const user = await userModel.findOne({ _id: user_id });
+    const already_liked = user.likedPosts.indexOf(String(post_id));
+    if (already_liked > -1 && like) {
+      return res
+        .status(200)
+        .send({ success: false, message: "Post liked already" });
+    }
+    const post = await postModel.findOne({ _id: post_id });
+    like ? (post.likes = post.likes + 1) : (post.likes = post.likes - 1);
+    await post.save();
+    if (like) {
+      user.likedPosts = [...user.likedPosts, String(post_id)];
+    } else {
+      user.likedPosts.pull(String(post_id));
+    }
+    await user.save();
+    res.status(200).send({
+      success: true,
+      message: "Post Liked or disliked Successfully",
+    });
+  } catch (error) {
+    console.log(error);
   }
 };

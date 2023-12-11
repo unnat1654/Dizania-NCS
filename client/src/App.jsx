@@ -10,6 +10,7 @@ import Create from "./pages/profile/create/Create";
 import Show from "./pages/profile/show/Show";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
+import Discover from "./pages/discover";
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
         <Route path="/upload" element={<Upload />} />
         <Route path="/create_profile" element={<Create />} />
         <Route path="/show_profile" element={<Show user={""} />} />
+        <Route path="/discover" element={<Discover />} />
       </Routes>
       <Footer />
     </div>

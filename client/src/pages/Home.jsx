@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useRef } from "react";
 import Layout from "../components/Layout";
 import { useAuth } from "../context/auth";
 import { useNavigate } from "react-router-dom";
@@ -17,9 +17,14 @@ import pane5background from "../assets/pane-5-background.svg";
 import pane5apply from "../assets/pane-5-apply.svg";
 import pane5learn from "../assets/pane-5-learn.svg";
 import pane5share from "../assets/pane-5-share.svg";
+import pane6innercircle from "../assets/pane-6-inner-circle.svg";
+import pane6middlecircle from "../assets/pane-6-middle-circle.svg";
+import pane6outercircle from "../assets/pane-6-outer-circle.svg";
+
 const Home = () => {
   const [auth, setAuth] = useAuth();
   const navigate = useNavigate();
+
   return (
     <Layout>
       <div className="pane-1">
@@ -126,6 +131,18 @@ const Home = () => {
         <Tilt className="pane-5-item">
           <img src={pane5share} />
         </Tilt>
+      </div>
+      <div className="pane-6">
+        <img src={pane6innercircle} className="pane-6-inner-circle" />
+        <img src={pane6middlecircle} className="pane-6-middle-circle" />
+        <img src={pane6outercircle} className="pane-6-outer-circle" />
+        <div className="pane-6-paragraph">
+          <span>
+            be it any tool <br />
+            it's your idea <br />
+            your potential
+          </span>
+        </div>
       </div>
     </Layout>
   );

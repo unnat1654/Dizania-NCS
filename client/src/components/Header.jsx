@@ -15,15 +15,21 @@ const Header = () => {
             </Link>
           </li>
           <li>
-            <Link to="/participate">PARTICIPATE</Link>
+            <Link className={auth?.user && `loggedin-li`} to="/participate">
+              PARTICIPATE
+            </Link>
           </li>
           <li>
-            <Link to="/discover">DISCOVER</Link>
+            <Link className={auth?.user && `loggedin-li`} to="/discover">
+              DISCOVER
+            </Link>
           </li>
           {auth?.user ? (
             <>
               <li>
-                <Link to="/profile">PROFILE</Link>
+                <Link className="loggedin-li" to="/profile">
+                  PROFILE
+                </Link>
               </li>
               <li className="navigation-button">
                 <button
@@ -48,6 +54,7 @@ const Header = () => {
           )}
         </ul>
       </div>
+      <div className="proxy-Hnavigation-bar"></div>
     </div>
   );
 };
