@@ -57,18 +57,19 @@ const Create = () => {
       const formData = {
         username: name,
         bio,
-        connections: selectedConnections,
-        tools: selectedTools,
+        connections: { platforms: selectedConnections }, // Wrap selectedConnections in an object
+        tools: { names: selectedTools }, // Wrap selectedTools in an object
         image: selectedFile,
         quote,
       };
 
+      // Convert image to a string (or handle it appropriately based on your data)
+      if (formData.image && typeof formData.image === "object") {
+        formData.image = formData.image.toString(); // or use another method to convert to string
+      }
+
       console.log(formData);
-      const response = await axios.post(apiUrl, formData, {
-        headers: {
-          "Content-Type": "multipart/form-data",
-        },
-      });
+      const response = await axios.post(apiUrl, formData);
 
       console.log("Response from server:", response.data);
 
@@ -103,37 +104,6 @@ const Create = () => {
                 style={{ width: "100%", height: "100%" }}
               />
             )}
-              <input
-                type="file"
-                accept="image/*"
-                ref={fileInputRef}
-                style={{ display: "none" }}
-                onChange={handleFileChange}
-              />
-            </div>
-            <div className={styles.nameContainer}>
-              <label htmlFor="name" className={styles.label}>
-                <input
-                  type="text"
-                  className={styles.input}
-                  placeholder="Name"
-                  value={name}
-                  onChange={(e) => setName(e.target.value)}
-                />
-              </label>
-              <label htmlFor="bio" className={styles.label}>
-                <textarea
-                  name="bio"
-                  id="bio"
-                  cols="30"
-                  rows="10"
-                  placeholder="Add Bio"
-                  className={styles.input}
-                  value={bio}
-                  onChange={(e) => setBio(e.target.value)}
-                />
-              </label>
-            </div>
             <input
               type="file"
               accept="image/*"
@@ -142,7 +112,38 @@ const Create = () => {
               onChange={handleFileChange}
             />
           </div>
-         <div className={styles.lower}>
+          <div className={styles.nameContainer}>
+            <label htmlFor="name" className={styles.label}>
+              <input
+                type="text"
+                className={styles.input}
+                placeholder="Name"
+                value={name}
+                onChange={(e) => setName(e.target.value)}
+              />
+            </label>
+            <label htmlFor="bio" className={styles.label}>
+              <textarea
+                name="bio"
+                id="bio"
+                cols="30"
+                rows="10"
+                placeholder="Add Bio"
+                className={styles.input}
+                value={bio}
+                onChange={(e) => setBio(e.target.value)}
+              />
+            </label>
+          </div>
+          <input
+            type="file"
+            accept="image/*"
+            ref={fileInputRef}
+            style={{ display: "none" }}
+            onChange={handleFileChange}
+          />
+        </div>
+        <div className={styles.lower}>
           <div className={styles.customSelect}>
             <select
               className={`${styles.select}`}

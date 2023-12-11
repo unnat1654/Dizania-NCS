@@ -9,8 +9,8 @@ const profileSchema = new mongoose.Schema(
       ref: "Users",
       required: true,
     },
-    displayName:{
-      type:String
+    displayName: {
+      type: String,
     },
     profilePicture: {
       type: String,
@@ -37,17 +37,19 @@ const profileSchema = new mongoose.Schema(
     rank: {
       type: Number,
       default: 0,
-
     },
     competetion: {
       participated: {
         type: Number,
+        default: 1,
       },
       currStreak: {
         type: Number,
+        default: 1,
       },
       maxStreak: {
         type: Number,
+        default: 1,
       },
     },
     // tools: [{ type: mongoose.ObjectId, ref: "Tools" }],

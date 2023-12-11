@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import styles from "./Show.module.css";
 import postImg from "./assets/post.png";
@@ -21,8 +21,9 @@ const Show = ({ user }) => {
   const location = useLocation();
   console.log("Used Data from Show.jsx", user);
   const { profile: initialProfileData } = location.state || {};
-  console.log("profileData", profileData);
   const [profileData, setProfileData] = useState(initialProfileData);
+  console.log("profileData", profileData);
+  const [profileImage, setProfileImage] = useState(null);
 
   useEffect(() => {
     // Fetch profile data from the backend if location.state is not available
@@ -177,8 +178,27 @@ const Show = ({ user }) => {
 
     numCompetitions = 34,
     competition,
-    profilePicture: img,
+    profilePicture,
   } = profileData;
+  // ||
+  // testData;
+
+  useEffect(() => {
+    // ... (existing code)
+
+    const handleFileProfilePicture = () => {
+      if (profilePicture instanceof File) {
+        const reader = new FileReader();
+        reader.onloadend = () => {
+          setProfileImage(reader.result);
+        };
+        reader.readAsDataURL(profilePicture);
+      }
+    };
+
+    handleFileProfilePicture();
+  }, [profilePicture]);
+
   return (
     <Layout>
       <div className={styles.show}>
@@ -186,7 +206,15 @@ const Show = ({ user }) => {
           <div className={styles.textWrap}>
             <div className={styles.profile}>
               <div className={styles.profileImgC}>
-                <img src={img} alt="" className={styles.profieImage} />
+                {profileImage ? (
+                  <img
+                    src={profileImage}
+                    alt=""
+                    className={styles.profieImage}
+                  />
+                ) : (
+                  <img src={profileImg} alt="" className={styles.profieImage} />
+                )}
               </div>
               <div className={styles.nameC}>
                 <p className={styles.name}>{name}</p>
@@ -332,7 +360,9 @@ const Show = ({ user }) => {
                 </div>
                 <div className={styles.infoPost}>
                   <p>Participation</p>
-                  <p>{numCompetitions}</p>
+                  <p>
+                    {competition?.participated ? competition?.participated : 0}
+                  </p>
                   <p></p>
                 </div>
               </div>
@@ -348,13 +378,19 @@ const Show = ({ user }) => {
             <p className={styles.ranktext}>RANK - {rank}</p>
             <div className={styles.competitions}>
               <p>No. Of Competitions Participated</p>
-              <p>{competition.participated}</p>
+              <p>{numCompetitions}</p>
             </div>
             <div className={styles.streak}>
               <p className={styles.ranktext}>STREAK</p>
               <div className={styles.streaks}>
-                <p>Current Streak - {competition.currStreak} </p>
-                <p>Max Streak - {competition.maxStreak}</p>
+                <p>
+                  Current Streak -{" "}
+                  {competition?.currStreak ? competition?.currStreak : 0}{" "}
+                </p>
+                <p>
+                  Max Streak -{" "}
+                  {competition?.maxStreak ? competition?.maxStreak : 0}
+                </p>
               </div>
             </div>
           </div>
