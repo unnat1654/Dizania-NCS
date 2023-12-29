@@ -32,8 +32,7 @@ a {
 }
 @media screen and (max-width: 700px) {
   body {
-    overflow: auto;
-    overflow: initial;
+    overflow-x: scroll;
   }
 }
 
@@ -80,11 +79,17 @@ a {
   width: 100vw;
   box-shadow: #335fc533 0px 20px 30px -10px;
 }
-@media screen and (max-width: 630px) {
+@media screen and (max-width: 480px) {
   .Hnavigation-bar {
     height: 20vh;
   }
 }
+@media screen and (max-width: 380px) {
+  .Hnavigation-bar {
+    height: 23vh;
+  }
+}
+
 .Hnavigation-bar ul {
   display: flex;
   flex-direction: row;
@@ -112,10 +117,13 @@ a {
 }
 
 .Hnavigation-bar ul li:nth-child(1) {
-  border-radius: 10px;
+  border-radius: 20px;
   margin-left: 30px;
-  margin-top: 8px;
-  height: 93%;
+  margin-top: 1%;
+}
+.Hnavigation-bar-logo {
+  height: calc(50px + 4vh);
+  width: calc(50px + 4vh);
 }
 
 .Hnavigation-bar ul li:nth-child(2) {
@@ -270,6 +278,7 @@ a {
   flex-direction: column;
   row-gap: 30px;
   margin: 13vh;
+  margin-block: 25vh;
   z-index: 10;
   overflow: visible;
 }
@@ -361,11 +370,15 @@ a {
   opacity: 50%;
   z-index: 0;
 }
-
 .figmaimg {
   position: absolute;
   bottom: -50px;
   left: -50px;
+}
+@media screen and (max-width: 500px) {
+  .rafiki {
+    display: none;
+  }
 }
 
 .login-forgot-password-link {
@@ -598,11 +611,11 @@ input[type="file"] {
 
 .home-buttons {
   max-width: 400px;
-  padding: 30px 40px;
+  padding: 4vh 4vw;
   margin-top: 5vh;
   font-family: Verdana;
   font-weight: 400;
-  font-size: 32px;
+  font-size: calc(20px + 1vw);
   letter-spacing: 0em;
   color: white;
   border: 2.5px solid transparent;
@@ -700,7 +713,7 @@ input[type="file"] {
   -webkit-text-fill-color: transparent;
   -webkit-text-stroke: 1px;
   font-family: Verdana;
-  font-size: 70px;
+  font-size: calc(30px + 3vw);
   font-weight: 700;
   line-height: 78px;
   letter-spacing: 0em;
@@ -710,7 +723,7 @@ input[type="file"] {
 .pane-2-text-sub {
   color: white;
   font-family: Verdana;
-  font-size: 60px;
+  font-size: calc(25px + 2vw);
   font-weight: 700;
   line-height: 78px;
   letter-spacing: 0em;
@@ -733,7 +746,12 @@ input[type="file"] {
   bottom: -50px;
   right: 0px;
 }
-
+@media screen and (max-width: 800px) {
+  .pane-two-graphic,
+  .pane-two-eclipse {
+    display: none;
+  }
+}
 .pane-3 {
   background-color: #080808;
   min-width: 100vw;
@@ -777,6 +795,7 @@ input[type="file"] {
   flex-direction: column;
   margin-top: 40px;
 }
+
 .pane-3-table-row {
   display: flex;
   justify-content: flex-start;
@@ -786,22 +805,22 @@ input[type="file"] {
 .pane-3-table-row div {
   border: 10px solid #929292;
   border-radius: 20%;
-  width: 250px;
-  height: 250px;
+  width: calc(150px + 4vw);
+  height: calc(150px + 4vw);
   box-sizing: border-box;
   background-color: #0a0d0f;
 }
 .pane-3-graphics {
-  margin: 50px;
-  width: 130px;
+  margin: 40px;
+  width: calc(60px + 4vw);
 }
 .pane-3-graphics-x {
   margin: 25px;
-  width: 180px;
+  width: calc(80px + 4vw);
 }
 .pane-3-table-row span {
-  width: 350px;
-  margin-left: 70px;
+  width: calc(200px + 10vw);
+  margin-left: calc(10px + 4vw);
   font-family: Verdana;
   font-size: 25px;
   font-weight: 400;
@@ -853,6 +872,7 @@ input[type="file"] {
 }
 .pane-5-background {
   position: absolute;
+  width: 100vw;
 }
 @media screen and (max-width: 700px) {
   .pane-5-background {
@@ -1062,6 +1082,22 @@ input[type="file"] {
   max-height: 100vh;
   flex-shrink: 0;
   margin-block: 12.5px;
+}
+.discover-load-button {
+  color: var(--white);
+  background-color: var(--black);
+  padding: 5px 30px;
+  font-family: Verdana;
+  font-size: 20px;
+  font-weight: 400;
+  line-height: 39px;
+  letter-spacing: 0em;
+  text-align: left;
+  max-width: fit-content;
+  border-radius: 6px;
+  background: linear-gradient(#0a0d0f, #0a0d0f) padding-box,
+    linear-gradient(to bottom, var(--blue), var(--pink)) border-box;
+  border: 2.5px solid transparent;
 }
 @media screen and (max-width: 1250px) {
   .discover-list-column-item {

@@ -16,8 +16,10 @@ const Discover = () => {
     setIsLoading(true);
     try {
       const { data } = await axios.get("/v1/post/get-posts?p=${page}&lmt=12");
-      setPostList((prevItems) => [...prevItems, ...data.posts]);
-      setPage((prevPage) => prevPage + 1);
+      if (data?.success) {
+        setPostList((prevItems) => [...prevItems, ...data?.posts]);
+        setPage((prevPage) => prevPage + 1);
+      }
     } catch (error) {
       console.log(error);
     } finally {
@@ -48,20 +50,7 @@ const Discover = () => {
       console.log(error);
     }
   };
-  const handleScroll = () => {
-    if (
-      window.innerHeight + document.documentElement.scrollTop !==
-      document.documentElement.offsetHeight
-    ) {
-      return;
-    }
-    getPosts();
-  };
 
-  useEffect(() => {
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, [isLoading]);
   return (
     <Layout>
       <div className="discover-nav-bar">
@@ -171,6 +160,15 @@ const Discover = () => {
             ))}
         </div>
       </div>
+      <button
+        onClick={(e) => {
+          e.preventDefault();
+          getPosts();
+        }}
+        className="discover-load-button"
+      >
+        Load More
+      </button>
     </Layout>
   );
 };

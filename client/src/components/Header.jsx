@@ -11,7 +11,7 @@ const Header = () => {
         <ul>
           <li>
             <Link to="/">
-              <img src={logo} className="logo" />
+              <img src={logo} className="Hnavigation-bar-logo" />
             </Link>
           </li>
           <li>
