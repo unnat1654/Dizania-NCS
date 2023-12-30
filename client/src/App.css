@@ -795,7 +795,6 @@ input[type="file"] {
   flex-direction: column;
   margin-top: 40px;
 }
-
 .pane-3-table-row {
   display: flex;
   justify-content: flex-start;
@@ -1098,6 +1097,10 @@ input[type="file"] {
   background: linear-gradient(#0a0d0f, #0a0d0f) padding-box,
     linear-gradient(to bottom, var(--blue), var(--pink)) border-box;
   border: 2.5px solid transparent;
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
+  margin-bottom: 50px;
 }
 @media screen and (max-width: 1250px) {
   .discover-list-column-item {
