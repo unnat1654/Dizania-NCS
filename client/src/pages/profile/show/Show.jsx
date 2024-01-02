@@ -197,7 +197,7 @@ const Show = ({ user }) => {
     };
 
     handleFileProfilePicture();
-  }, [profilePicture]);
+  }, [profilePicture,profileImage]);
 
   return (
     <Layout>
@@ -280,17 +280,17 @@ const Show = ({ user }) => {
                 {tools.map((tool) => {
                   return (
                     <Link to="/" className={styles.toolW}>
-                      {tool === "figma" ? (
+                      {tool.name === "Figma" ? (
                         <img src={figma} alt="" className={styles.toolsIcon} />
-                      ) : tool === "adobe-photoshop" ? (
+                      ) : tool.name === "adobe-photoshop" ? (
                         <img
                           src={adobe_photoshop}
                           alt=""
                           className={styles.toolsIcon}
                         />
-                      ) : tool === "sketch" ? (
+                      ) : tool.name === "sketch" ? (
                         <img src={sketch} alt="" className={styles.toolsIcon} />
-                      ) : tool === "adobe-xd" ? (
+                      ) : tool.name === "adobe-xd" ? (
                         <img
                           src={adobe_xd}
                           alt=""

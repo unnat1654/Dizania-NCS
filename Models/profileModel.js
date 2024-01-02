@@ -59,10 +59,10 @@ const profileSchema = new mongoose.Schema(
           type: String,
           default: "figma",
         },
-        slug: {
-          type: String,
-          default: "www.figma.com",
-        },
+        // slug: {
+        //   type: String,
+        //   default: "www.figma.com",
+        // },
       },
     ],
     most_used: [
@@ -100,10 +100,10 @@ const profileSchema = new mongoose.Schema(
           type: String,
           default: "linkedin",
         },
-        url: {
-          type: String,
-          default: "www.linkedin.com",
-        },
+        // url: {
+        //   type: String,
+        //   default: "www.linkedin.com",
+        // },
       },
     ],
     post: [

@@ -50,6 +50,7 @@ const Create = () => {
     e.preventDefault();
 
     try {
+      // const apiUrl = `http://localhost:8080/v1/auth/create-profile`;
       const apiUrl = `${
         import.meta.env.VITE_PUBLIC_API_URL
       }/v1/auth/create-profile`;
@@ -57,8 +58,8 @@ const Create = () => {
       const formData = {
         username: name,
         bio,
-        connections: { platforms: selectedConnections }, // Wrap selectedConnections in an object
-        tools: { names: selectedTools }, // Wrap selectedTools in an object
+        connections: selectedConnections.map((platform) => ({ platform })),
+        tools: selectedTools.map((tool) => ({ name: tool })), // Wrap selectedTools in an object
         image: selectedFile,
         quote,
       };

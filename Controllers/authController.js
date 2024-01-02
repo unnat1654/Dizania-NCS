@@ -175,6 +175,7 @@ export const createProfile = async (req, res) => {
     const { username, bio, connections, tools, image ,quote} = req.body;
 
     console.log("From backend",req.body)
+    console.log("reached-1");
 
     const newProfile = new profileModel({
       username,
@@ -185,6 +186,8 @@ export const createProfile = async (req, res) => {
       profilePicture: image,
       quote
     });
+
+    console.log("New Profile",newProfile)
 
     // Save the profile data to MongoDB
     const savedProfile = await newProfile.save();
