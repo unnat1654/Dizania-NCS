@@ -51,9 +51,10 @@ const Create = () => {
 
     try {
       // const apiUrl = `http://localhost:8080/v1/auth/create-profile`;
-      const apiUrl = `${
-        import.meta.env.VITE_PUBLIC_API_URL
-      }/v1/auth/create-profile`;
+      // const apiUrl = `${
+      //   import.meta.env.VITE_PUBLIC_API_URL
+      // }/v1/auth/create-profile`;
+      const apiUrl = "https://dizania.onrender.com/v1/auth/create-profile";
 
       const formData = {
         username: name,
@@ -72,10 +73,9 @@ const Create = () => {
       console.log(formData);
       const response = await axios.post(apiUrl, formData);
 
-      console.log("Response from server:", response.data);
+      console.log("Create.jsx Response from server:", response.data);
 
       const profileData = response.data.profile;
-
       // Use navigate to go to show_profile with profile data
       navigate("/show_profile", { state: { profile: profileData } });
     } catch (error) {

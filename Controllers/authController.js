@@ -192,6 +192,7 @@ export const createProfile = async (req, res) => {
     // Save the profile data to MongoDB
     const savedProfile = await newProfile.save();
 
+    console.log("Saved Profile",savedProfile)
     res.status(201).json({
       success: true,
       message: "Profile created successfully",
